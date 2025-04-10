@@ -6,6 +6,8 @@ import { provideEffects } from '@ngrx/effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import {provideHttpClient} from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import {API_URL} from './core/http/api-url.token';
+import {environment} from '../environments/environment.development';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -16,5 +18,9 @@ export const appConfig: ApplicationConfig = {
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
     provideHttpClient(),
     provideAnimationsAsync(),
+    {
+      provide: API_URL,
+      useValue: environment.api_url,
+    },
   ]
 };
