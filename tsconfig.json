@@ -25,7 +25,8 @@
     ],
     "baseUrl": "src",
     "paths": {
-      "@layouts/*": ["app/layouts/*"]
+      "@layouts/*": ["app/layouts/*"],
+      "@models/*": ["app/core/models/*"],
     }
   },
   "angularCompilerOptions": {
