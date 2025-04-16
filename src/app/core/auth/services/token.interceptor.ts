@@ -13,7 +13,7 @@ export const tokenInterceptor: HttpInterceptorFn = (req, next) => {
       setHeaders: {
         'Authorization': `Bearer ${token}`,
       }
-    })
+    });
   }
 
 

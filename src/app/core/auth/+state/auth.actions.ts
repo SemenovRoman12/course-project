@@ -16,5 +16,7 @@ export const AuthActions = createActionGroup({
     'Get User': emptyProps(),
     'Get User Success': props<{userData: UserEntity}>(),
     'Get User Failure': props<{error: Error}>(),
+
+    'Logout': emptyProps(),
   },
 });

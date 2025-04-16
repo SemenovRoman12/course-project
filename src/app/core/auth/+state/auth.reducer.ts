@@ -48,10 +48,15 @@ export const authFeature = createFeature({
     on(AuthActions.getUserSuccess, (state, { userData }) => ({
       ...state,
       loggedUser: userData,
+      authStatus: 'loaded' as const,
     })),
     on(AuthActions.getUserFailure, (state, { error }) => ({
       ...state,
       error,
     })),
+    on(AuthActions.logout, (state) => ({
+      ...state,
+      ...authInitialState,
+    }))
   )
 })

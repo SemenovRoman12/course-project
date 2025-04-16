@@ -9,6 +9,6 @@ export const routes: Routes = [
   },
   {
     path: 'home',
-    loadComponent: () => import('@layouts/main-layout/main-layout.component').then(c => c.MainLayoutComponent)
+    loadComponent: () => import('@layouts/main-layout/main-layout.component').then(c => c.MainLayoutComponent),
   }
 ];
