@@ -3,11 +3,8 @@ import {inject} from '@angular/core';
 import {StorageTokenService} from './storage-token.service';
 
 export const authGuard: CanActivateFn = (route, state) => {
-  const storage = inject(StorageTokenService);
+  const storageTokenService = inject(StorageTokenService);
+  const token = storageTokenService.getItem();
 
-  if (!storage.getItem()) {
-    return false;
-  }
-
-  return true;
+  return !!token;
 };
