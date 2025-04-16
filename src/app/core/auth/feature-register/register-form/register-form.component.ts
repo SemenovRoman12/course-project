@@ -34,7 +34,11 @@ export class RegisterFormComponent {
 
   public onSubmit() {
     if(this.registerForm.valid) {
-      const data = this.registerForm.getRawValue() as RegisterUser;
+      const data: RegisterUser = {
+        name: this.registerForm.value.name?.trim() as string,
+        email: this.registerForm.value.email?.trim().toLowerCase() as string,
+        password: this.registerForm.value.password as string,
+      };
       this.registerEvent.emit(data);
     }
   }
