@@ -5,6 +5,7 @@ import {MatButton} from '@angular/material/button';
 import {
   RegisterContainerComponent
 } from '../../core/auth/feature-register/register-container/register-container.component';
+import {LoginContainerComponent} from '../../core/auth/feature-login/login-container/login-container.component';
 
 @Component({
   selector: 'main-layout',
@@ -13,7 +14,8 @@ import {
     HeaderLayoutComponent,
     FooterLayoutComponent,
     MatButton,
-    RegisterContainerComponent
+    RegisterContainerComponent,
+    LoginContainerComponent
   ],
   templateUrl: './main-layout.component.html',
   styleUrl: './main-layout.component.scss',

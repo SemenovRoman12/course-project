@@ -8,14 +8,12 @@ export const tokenInterceptor: HttpInterceptorFn = (req, next) => {
   const token = storageTokenService.getItem();
 
   if(token && req.url.includes('auth_me')) {
-
     req = req.clone({
       setHeaders: {
         'Authorization': `Bearer ${token}`,
       }
     });
   }
-
 
   return next(req).pipe(
     catchError((error) => {

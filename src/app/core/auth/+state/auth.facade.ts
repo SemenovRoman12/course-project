@@ -1,6 +1,6 @@
 import {inject, Injectable} from '@angular/core';
 import {Store} from '@ngrx/store';
-import {RegisterUser} from '../models/sign.auth.model';
+import {RegisterUser, SignAuthUser} from '../models/sign.auth.model';
 import {AuthActions} from './auth.actions';
 import {selectIsAuthenticated} from './auth.selectors';
 
@@ -14,6 +14,10 @@ export class AuthFacade {
 
   public register(userData: RegisterUser) {
     this.store.dispatch(AuthActions.register({ userData }));
+  }
+
+  public login(userData: SignAuthUser) {
+    this.store.dispatch(AuthActions.login({ userData }));
   }
 
   public logout() {

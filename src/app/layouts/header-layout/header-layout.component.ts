@@ -16,12 +16,7 @@ import {AsyncPipe} from '@angular/common';
   styleUrl: './header-layout.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HeaderLayoutComponent implements OnInit{
+export class HeaderLayoutComponent {
   private readonly authFacade = inject(AuthFacade);
-
-  public isAuthenticated$ = this.authFacade.isAuthenticated$;
-
-  ngOnInit() {
-    console.log(this.isAuthenticated$);
-  }
+  public readonly isAuthenticated$ = this.authFacade.isAuthenticated$;
 }

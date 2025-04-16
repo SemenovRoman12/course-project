@@ -6,7 +6,7 @@ export interface RegisterUser {
   password: string;
 }
 
-export interface RegisterResponse {
+export interface SignAuthResponse {
   token: string;
   data: UserEntity;
 }
@@ -16,6 +16,6 @@ export interface SignAuthUser {
   password: string;
 }
 
-export interface SignAuthPayload {
-  authToken: string;
+export interface SignAuthRequest extends UserEntity {
+  password: string;
 }

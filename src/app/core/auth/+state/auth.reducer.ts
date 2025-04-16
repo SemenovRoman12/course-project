@@ -33,15 +33,34 @@ export const authFeature = createFeature({
       ...state,
       authStatus: 'loading' as const,
     })),
-    on(AuthActions.registerSuccess, (state, { authToken }) => ({
+    on(AuthActions.registerSuccess, (state, { res }) => ({
       ...state,
-      authToken,
+      authToken: res.token,
+      loggedUser: res.data,
       authStatus: 'loaded' as const,
     })),
     on(AuthActions.registerFailure, (state, { error }) => ({
       ...state,
       error,
     })),
+
+
+    on(AuthActions.login, (state, { userData }) => ({
+      ...state,
+      authStatus: 'loading' as const,
+    })),
+    on(AuthActions.loginSuccess, (state, { res }) => ({
+      ...state,
+      authToken: res.token,
+      loggedUser: res.data,
+      authStatus: 'loaded' as const,
+    })),
+    on(AuthActions.loginFailure, (state, { error }) => ({
+      ...state,
+      error,
+    })),
+
+
     on(AuthActions.getUser, (state) => ({
       ...state,
     })),
@@ -54,9 +73,10 @@ export const authFeature = createFeature({
       ...state,
       error,
     })),
+
     on(AuthActions.logout, (state) => ({
       ...state,
       ...authInitialState,
-    }))
+    })),
   )
 })

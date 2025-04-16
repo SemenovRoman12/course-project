@@ -1,1 +1,30 @@
-<p>login-form works!</p>
+<form
+  class="login-form"
+  [formGroup]="loginForm"
+  (ngSubmit)="onSubmit()"
+>
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input
+      matInput
+      type="email"
+      formControlName="email"
+    >
+    <mat-error>Нада</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Password</mat-label>
+    <input
+      matInput
+      type="password"
+      formControlName="password"
+    >
+    <mat-error>Нада</mat-error>
+  </mat-form-field>
+
+  <button
+    mat-flat-button
+    [disabled]="!loginForm.valid"
+    type="submit"
+  >Войти</button>
+</form>
