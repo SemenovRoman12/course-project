@@ -1,6 +1,18 @@
 <mat-toolbar>
-  <p class="footer-text">Course project</p>
+  <div class="wrapper">
 
+    <nav class="nav">
+      <li><a href="#">Главная</a></li>
+
+      <li><a href="#">Отзывы</a></li>
+
+      <li><a href="#">О нас</a></li>
+
+      @if (isAuthenticated$ | async) {
+        <li><a href="#">Рекомендации</a></li>
+      }
+    </nav>
+  </div>
   @if (isAuthenticated$ | async) {
     <logout-button/>
   }

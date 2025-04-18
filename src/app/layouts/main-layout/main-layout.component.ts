@@ -4,8 +4,10 @@ import {FooterLayoutComponent} from '../footer-layout/footer-layout.component';
 import {MatButton} from '@angular/material/button';
 import {
   RegisterContainerComponent
-} from '../../core/auth/feature-register/register-container/register-container.component';
-import {LoginContainerComponent} from '../../core/auth/feature-login/login-container/login-container.component';
+} from '@auth/feature-register/register-container/register-container.component';
+import {LoginContainerComponent} from '@auth/feature-login/login-container/login-container.component';
+import {RouterOutlet} from '@angular/router';
+import {MatSidenavContent} from '@angular/material/sidenav';
 
 @Component({
   selector: 'main-layout',
@@ -15,7 +17,9 @@ import {LoginContainerComponent} from '../../core/auth/feature-login/login-conta
     FooterLayoutComponent,
     MatButton,
     RegisterContainerComponent,
-    LoginContainerComponent
+    LoginContainerComponent,
+    RouterOutlet,
+    MatSidenavContent,
   ],
   templateUrl: './main-layout.component.html',
   styleUrl: './main-layout.component.scss',
