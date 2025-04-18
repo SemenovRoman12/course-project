@@ -3,6 +3,8 @@ import {MatToolbar} from '@angular/material/toolbar';
 import {AuthFacade} from '@auth/+state/auth.facade';
 import {LogoutButtonComponent} from '@auth/feature-logut/logout-button/logout-button.component';
 import {AsyncPipe} from '@angular/common';
+import {LetDirective} from '@ngrx/component';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'header-layout',
@@ -10,7 +12,9 @@ import {AsyncPipe} from '@angular/common';
   imports: [
     MatToolbar,
     LogoutButtonComponent,
-    AsyncPipe
+    AsyncPipe,
+    LetDirective,
+    RouterLink,
   ],
   templateUrl: './header-layout.component.html',
   styleUrl: './header-layout.component.scss',

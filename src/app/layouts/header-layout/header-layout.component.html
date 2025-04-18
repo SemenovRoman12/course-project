@@ -1,19 +1,25 @@
-<mat-toolbar>
-  <div class="wrapper">
+<mat-toolbar *ngrxLet="isAuthenticated$ as isAuth" class="bg-light px-3 py-2">
+  <div class="container-fluid d-flex justify-content-between align-items-center flex-wrap">
 
-    <nav class="nav">
-      <li><a href="#">Главная</a></li>
-
-      <li><a href="#">Отзывы</a></li>
-
-      <li><a href="#">О нас</a></li>
-
-      @if (isAuthenticated$ | async) {
-        <li><a href="#">Рекомендации</a></li>
-      }
+    <nav class="mx-auto">
+      <ul class="nav gap-3 justify-content-center">
+        <li class="nav-item"><a class="nav-link text-dark" href="">Главная</a></li>
+        <li class="nav-item"><a class="nav-link text-dark" href="">Отзывы</a></li>
+        <li class="nav-item"><a class="nav-link text-dark" href="">О нас</a></li>
+        @if (isAuth) {
+          <li class="nav-item"><a class="nav-link text-dark" href="">Рекомендации</a></li>
+        }
+      </ul>
     </nav>
+
+    @if (isAuth) {
+      <logout-button />
+    } @else {
+      <div class="d-flex align-items-center gap-1">
+        <a class="text-dark text-decoration-none" routerLink="/login">Вход</a>
+        <span>/</span>
+        <a class="text-dark text-decoration-none" routerLink="/register">Регистрация</a>
+      </div>
+    }
   </div>
-  @if (isAuthenticated$ | async) {
-    <logout-button/>
-  }
 </mat-toolbar>
