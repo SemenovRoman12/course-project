@@ -5,18 +5,21 @@ import {MatError, MatFormField, MatLabel} from '@angular/material/form-field';
 import {MatInput} from '@angular/material/input';
 import {RegisterUser} from '../../models/sign.auth.model';
 import {MatButton} from '@angular/material/button';
+import {RouterLink, RouterLinkActive} from "@angular/router";
 
 @Component({
   selector: 'register-form',
   standalone: true,
-  imports: [
-    ReactiveFormsModule,
-    MatFormField,
-    MatInput,
-    MatLabel,
-    MatError,
-    MatButton
-  ],
+    imports: [
+        ReactiveFormsModule,
+        MatFormField,
+        MatInput,
+        MatLabel,
+        MatError,
+        MatButton,
+        RouterLink,
+        RouterLinkActive
+    ],
   templateUrl: './register-form.component.html',
   styleUrl: './register-form.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

@@ -23,4 +23,8 @@ export class AuthFacade {
   public logout() {
     this.store.dispatch(AuthActions.logout());
   }
+
+  public getUser() {
+    this.store.dispatch(AuthActions.getUser());
+  }
 }

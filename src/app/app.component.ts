@@ -1,8 +1,6 @@
 import {ChangeDetectionStrategy, Component, inject, OnInit} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
-import {Store} from '@ngrx/store';
-import {AuthFacade} from './core/auth/+state/auth.facade';
-import {AuthActions} from './core/auth/+state/auth.actions';
+import {AuthFacade} from '@auth/+state/auth.facade';
 
 @Component({
   selector: 'app-root',
@@ -13,9 +11,9 @@ import {AuthActions} from './core/auth/+state/auth.actions';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements OnInit{
-  private readonly store = inject(Store);
+  private readonly authFacade = inject(AuthFacade);
 
   ngOnInit() {
-    this.store.dispatch(AuthActions.getUser());
+    this.authFacade.getUser();
   }
 }

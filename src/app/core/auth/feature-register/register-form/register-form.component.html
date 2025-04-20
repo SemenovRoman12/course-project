@@ -1,38 +1,53 @@
-<form
-  class="register-form"
-  [formGroup]="registerForm"
-  (ngSubmit)="onSubmit()"
->
-  <mat-form-field>
-    <mat-label>Name</mat-label>
-    <input
-      matInput
-      formControlName="name"
-    >
-    <mat-error>Нада</mat-error>
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Email</mat-label>
-    <input
-      matInput
-      type="email"
-      formControlName="email"
-    >
-    <mat-error>Нада</mat-error>
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Password</mat-label>
-    <input
-      matInput
-      type="password"
-      formControlName="password"
-    >
-    <mat-error>Нада</mat-error>
-  </mat-form-field>
+<div class="wrapper">
+  <form
+    class="register-form p-4 border shadow-sm bg-white w-100"
+    [formGroup]="registerForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <h3 class="text-center mb-4">Регистрация</h3>
 
-  <button
-    mat-flat-button
-    [disabled]="!registerForm.valid"
-    type="submit"
-  >Зарегистрироваться</button>
-</form>
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input
+        matInput
+        formControlName="name"
+      >
+      <mat-error>Нада</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input
+        matInput
+        type="email"
+        formControlName="email"
+      >
+      <mat-error>Нада</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input
+        matInput
+        type="password"
+        formControlName="password"
+      >
+      <mat-error>Нада</mat-error>
+    </mat-form-field>
+
+    <p class="text-end small">
+      Уже есть аккаунт?
+      <a routerLink="/login" routerLinkActive>Войти</a>
+    </p>
+
+    <button
+      class="submit-button"
+      mat-flat-button
+      color="primary"
+      [disabled]="!registerForm.valid"
+      type="submit"
+    >
+      Зарегистрироваться
+    </button>
+  </form>
+</div>

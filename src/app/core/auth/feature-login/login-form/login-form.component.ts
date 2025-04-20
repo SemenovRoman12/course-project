@@ -5,6 +5,7 @@ import {FormType} from '@models/form.type';
 import {MatButton} from '@angular/material/button';
 import {MatError, MatFormField, MatLabel} from '@angular/material/form-field';
 import {MatInput} from '@angular/material/input';
+import {RouterLink, RouterLinkActive} from '@angular/router';
 
 @Component({
   selector: 'login-form',
@@ -15,7 +16,9 @@ import {MatInput} from '@angular/material/input';
     MatFormField,
     MatInput,
     MatLabel,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterLinkActive,
+    RouterLink
   ],
   templateUrl: './login-form.component.html',
   styleUrl: './login-form.component.scss',

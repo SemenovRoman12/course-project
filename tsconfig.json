@@ -27,7 +27,8 @@
     "paths": {
       "@layouts/*": ["app/layouts/*"],
       "@models/*": ["app/core/models/*"],
-      "@auth/*": ["app/core/auth/*"]
+      "@auth/*": ["app/core/auth/*"],
+      "@pages/*": ["app/pages/*"]
     }
   },
   "angularCompilerOptions": {
