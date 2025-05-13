@@ -6,7 +6,7 @@ import {catchError, map, of, switchMap, tap} from 'rxjs';
 import {SignAuthResponse, SignAuthRequest, SignAuthUser} from '../models/sign.auth.model';
 import {StorageTokenService} from '../services/storage-token.service';
 import {Router} from '@angular/router';
-import {userAuthRequestAdapter} from '../../utils/user-auth-request.adapter';
+import {userAuthRequestAdapter} from '../services/user-auth-request.adapter';
 import {UserEntity} from '@models/user.model';
 
 export const registerEffect = createEffect(

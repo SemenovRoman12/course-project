@@ -7,9 +7,17 @@ export const routes: Routes = [
     loadComponent: () => import('@layouts/main-layout/main-layout.component').then(c => c.MainLayoutComponent),
     children: [
       {
+        path: '',
+        loadComponent: () => import('@pages/home/home.component').then(c => c.HomeComponent),
+      },
+      {
         path: 'about',
         loadComponent: () => import('@pages/about/about.component').then(c => c.AboutComponent),
       },
+      {
+        path: 'reviews',
+        loadComponent: () => import('@features/feature-reviews/reviews-list-container/reviews-list-container.component').then(c => c.ReviewsListContainerComponent),
+      }
     ]
   },
   {

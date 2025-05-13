@@ -1,0 +1,11 @@
+<h3>Продукция</h3>
+
+@if(products) {
+  <div class="row g-3">
+    @for (product of products; track product.id) {
+      <div class="col-12 col-md-6 col-xl-4">
+        <product-card [product]="product"/>
+      </div>
+    }
+  </div>
+}

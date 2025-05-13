@@ -1,0 +1,12 @@
+<h3>Отзывы</h3>
+@if (reviews) {
+  <div class="row g-3">
+    @for (review of reviews; track review.id) {
+      <div class="col-12 col-md-6 col-xl-4">
+        <review-card [review]="review" />
+      </div>
+    }
+  </div>
+} @else {
+  <p>Отзывов пока нет.</p>
+}

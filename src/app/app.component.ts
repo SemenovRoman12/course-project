@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, inject, OnInit} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
-import {AuthFacade} from '@auth/+state/auth.facade';
+import {AuthFacade} from '@auth/auth.facade';
 
 @Component({
   selector: 'app-root',

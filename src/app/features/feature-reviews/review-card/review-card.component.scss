@@ -1,0 +1,19 @@
+.review-card {
+  height: 165px;
+  min-height: 100%;
+}
+
+.review-title {
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+.description {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: auto;
+}
+
+mat-icon {
+  color: #fbc02d;
+}

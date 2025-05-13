@@ -1,0 +1,16 @@
+<ng-container *ngrxLet="{
+  reviewsList: reviewsList$,
+  reviewsStatus: reviewsStatus$
+} as vm">
+  @switch (vm.reviewsStatus) {
+    @case ('loading') {
+      <mat-progress-bar mode="indeterminate"/>
+    }
+    @case ('loaded') {
+      <reviews-list [reviews]="vm.reviewsList"/>
+    }
+    @case ('error') {
+      error
+    }
+  }
+</ng-container>

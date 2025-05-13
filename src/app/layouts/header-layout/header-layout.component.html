@@ -1,9 +1,9 @@
-<mat-toolbar *ngrxLet="isAuthenticated$ as isAuth" class="bg-light px-3 py-2">
+<mat-toolbar *ngrxLet="isAuthenticated$ as isAuth">
   <div class="container d-flex justify-content-between align-items-center flex-wrap">
     <nav>
       <ul class="header__nav nav gap-3 justify-content-center">
         <li class="header__nav-item"><a class="nav-link text-dark" routerLink="">Главная</a></li>
-        <li class="header__nav-item"><a class="nav-link text-dark" routerLink>Отзывы</a></li>
+        <li class="header__nav-item"><a class="nav-link text-dark" routerLink="/reviews">Отзывы</a></li>
         <li class="header__nav-item"><a class="nav-link text-dark" routerLink="/about">О нас</a></li>
         @if (isAuth) {
           <li class="header__nav-item"><a class="nav-link text-dark" href="">Рекомендации</a></li>

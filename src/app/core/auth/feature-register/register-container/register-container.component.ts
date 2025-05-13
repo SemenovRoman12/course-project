@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {RegisterFormComponent} from '../register-form/register-form.component';
 import {RegisterUser} from '../../models/sign.auth.model';
-import {AuthFacade} from '../../+state/auth.facade';
+import {AuthFacade} from '../../auth.facade';
 
 @Component({
   selector: 'register-container',

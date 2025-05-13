@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {MatToolbar} from '@angular/material/toolbar';
-import {AuthFacade} from '@auth/+state/auth.facade';
+import {AuthFacade} from '@auth/auth.facade';
 import {LogoutButtonComponent} from '@auth/feature-logut/logout-button/logout-button.component';
 import {AsyncPipe} from '@angular/common';
 import {LetDirective} from '@ngrx/component';

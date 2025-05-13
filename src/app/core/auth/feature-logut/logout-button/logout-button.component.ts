@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {MatIconButton} from '@angular/material/button';
 import {MatIcon} from '@angular/material/icon';
-import {AuthFacade} from '../../+state/auth.facade';
+import {AuthFacade} from '../../auth.facade';
 
 @Component({
   selector: 'logout-button',

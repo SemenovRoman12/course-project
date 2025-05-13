@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {LoginFormComponent} from '../login-form/login-form.component';
-import {AuthFacade} from '../../+state/auth.facade';
+import {AuthFacade} from '../../auth.facade';
 import {SignAuthUser} from '../../models/sign.auth.model';
 
 @Component({

@@ -1,8 +1,8 @@
 import {inject, Injectable} from '@angular/core';
 import {Store} from '@ngrx/store';
-import {RegisterUser, SignAuthUser} from '../models/sign.auth.model';
-import {AuthActions} from './auth.actions';
-import {selectIsAuthenticated} from './auth.selectors';
+import {RegisterUser, SignAuthUser} from './models/sign.auth.model';
+import {AuthActions} from './+state/auth.actions';
+import {selectIsAuthenticated} from './+state/auth.selectors';
 
 @Injectable({
   providedIn: 'root'

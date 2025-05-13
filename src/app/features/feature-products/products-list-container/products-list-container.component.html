@@ -1,0 +1,13 @@
+<ng-container *ngrxLet="vm$ as vm">
+  @switch (vm.productsStatus) {
+    @case ('loading') {
+      <mat-progress-bar mode="indeterminate"/>
+    }
+    @case ('loaded') {
+      <products-list [products]="vm.products"/>
+    }
+    @case ('error') {
+      <div>{{vm.error | json}}</div>
+    }
+  }
+</ng-container>

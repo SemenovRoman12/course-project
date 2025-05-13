@@ -28,7 +28,9 @@
       "@layouts/*": ["app/layouts/*"],
       "@models/*": ["app/core/models/*"],
       "@auth/*": ["app/core/auth/*"],
-      "@pages/*": ["app/pages/*"]
+      "@pages/*": ["app/pages/*"],
+      "@core/*": ["app/core/*"],
+      "@features/*": ["app/features/*"]
     }
   },
   "angularCompilerOptions": {
