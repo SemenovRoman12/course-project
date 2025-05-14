@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {ReviewEntity} from '../models/reviews.model';
-import {ReviewCardComponent} from '@features/feature-reviews/review-card/review-card.component';
+import {ReviewCardComponent} from '@features/reviews/review-card/review-card.component';
 
 @Component({
   selector: 'reviews-list',

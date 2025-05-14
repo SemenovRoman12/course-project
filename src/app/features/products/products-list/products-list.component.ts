@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
-import {ProductEntity} from '@features/feature-products/products-list-container/products-list-container.store';
-import {ProductCardComponent} from '@features/feature-products/product-card/product-card.component';
+import {ProductEntity} from '@features/products/products-list-container/products-list-container.store';
+import {ProductCardComponent} from '@features/products/product-card/product-card.component';
 
 @Component({
   selector: 'products-list',

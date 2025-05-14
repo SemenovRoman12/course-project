@@ -5,6 +5,8 @@ import {LogoutButtonComponent} from '@auth/feature-logut/logout-button/logout-bu
 import {AsyncPipe} from '@angular/common';
 import {LetDirective} from '@ngrx/component';
 import {RouterLink} from '@angular/router';
+import {MatIcon} from '@angular/material/icon';
+import {MatIconButton} from '@angular/material/button';
 
 @Component({
   selector: 'header-layout',
@@ -15,6 +17,8 @@ import {RouterLink} from '@angular/router';
     AsyncPipe,
     LetDirective,
     RouterLink,
+    MatIcon,
+    MatIconButton,
   ],
   templateUrl: './header-layout.component.html',
   styleUrl: './header-layout.component.scss',

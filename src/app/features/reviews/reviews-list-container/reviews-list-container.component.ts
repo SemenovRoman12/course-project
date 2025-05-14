@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, inject, Input, OnInit} from '@angular/core';
 import {ReviewsFacade} from '../reviews.facade';
-import {ReviewsListComponent} from '@features/feature-reviews/reviews-list/reviews-list.component';
+import {ReviewsListComponent} from '@features/reviews/reviews-list/reviews-list.component';
 import {MatProgressBar} from '@angular/material/progress-bar';
 import {LetDirective} from '@ngrx/component';
 import {map} from 'rxjs';

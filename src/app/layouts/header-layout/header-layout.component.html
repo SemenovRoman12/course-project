@@ -1,24 +1,37 @@
-<mat-toolbar *ngrxLet="isAuthenticated$ as isAuth">
+<mat-toolbar *ngrxLet="isAuthenticated$ as isAuth" class="bg-light">
   <div class="container d-flex justify-content-between align-items-center flex-wrap">
-    <nav>
-      <ul class="header__nav nav gap-3 justify-content-center">
-        <li class="header__nav-item"><a class="nav-link text-dark" routerLink="">Главная</a></li>
-        <li class="header__nav-item"><a class="nav-link text-dark" routerLink="/reviews">Отзывы</a></li>
-        <li class="header__nav-item"><a class="nav-link text-dark" routerLink="/about">О нас</a></li>
+    <nav class="d-flex align-items-center">
+      <ul class="header__nav nav gap-3">
+        <li class="header__nav-item">
+          <a class="nav-link text-dark" routerLink="">Главная</a>
+        </li>
+        <li class="header__nav-item">
+          <a class="nav-link text-dark" routerLink="/reviews">Отзывы</a>
+        </li>
+        <li class="header__nav-item">
+          <a class="nav-link text-dark" routerLink="/about">О нас</a>
+        </li>
         @if (isAuth) {
-          <li class="header__nav-item"><a class="nav-link text-dark" href="">Рекомендации</a></li>
+          <li class="header__nav-item">
+            <a class="nav-link text-dark" routerLink="">Рекомендации</a>
+          </li>
         }
       </ul>
     </nav>
 
-    @if (isAuth) {
-      <logout-button />
-    } @else {
-      <div class="d-flex align-items-center gap-1">
-        <a class="text-dark text-decoration-none" routerLink="/login">Вход</a>
-        <span>/</span>
-        <a class="text-dark text-decoration-none" routerLink="/register">Регистрация</a>
-      </div>
-    }
+    <div class="d-flex align-items-center gap-3">
+      @if (isAuth) {
+        <logout-button></logout-button>
+        <button mat-icon-button routerLink="">
+          <mat-icon>person_outline</mat-icon>
+        </button>
+      } @else {
+        <div class="d-flex align-items-center gap-2">
+          <a class="text-dark text-decoration-none" routerLink="/login">Вход</a>
+          <span>/</span>
+          <a class="text-dark text-decoration-none" routerLink="/register">Регистрация</a>
+        </div>
+      }
+    </div>
   </div>
 </mat-toolbar>

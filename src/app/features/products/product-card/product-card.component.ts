@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
-import {ProductEntity} from '@features/feature-products/products-list-container/products-list-container.store';
+import {ProductEntity} from '@features/products/products-list-container/products-list-container.store';
 import {MatCard, MatCardContent, MatCardHeader} from '@angular/material/card';
 import {MatIcon} from '@angular/material/icon';
 import {CurrencyPipe, NgStyle} from '@angular/common';

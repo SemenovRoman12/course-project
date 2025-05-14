@@ -16,7 +16,7 @@ export const routes: Routes = [
       },
       {
         path: 'reviews',
-        loadComponent: () => import('@features/feature-reviews/reviews-list-container/reviews-list-container.component').then(c => c.ReviewsListContainerComponent),
+        loadComponent: () => import('@features/reviews/reviews-list-container/reviews-list-container.component').then(c => c.ReviewsListContainerComponent),
       }
     ]
   },

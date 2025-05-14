@@ -11,8 +11,8 @@ import {environment} from '../environments/environment.development';
 import {authFeature} from '@auth/+state/auth.reducer';
 import * as authEffects from "@auth/+state/auth.effects";
 import {tokenInterceptor} from '@auth/services/token.interceptor';
-import * as reviewEffects from '@features/feature-reviews/+state/reviews.effects';
-import {reviewsFeature} from '@features/feature-reviews/+state/reviews.reducer';
+import * as reviewEffects from '@features/reviews/+state/reviews.effects';
+import {reviewsFeature} from '@features/reviews/+state/reviews.reducer';
 
 export const appConfig: ApplicationConfig = {
   providers: [

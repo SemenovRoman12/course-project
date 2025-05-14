@@ -1,6 +1,5 @@
 import {inject, Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
-import {Router} from '@angular/router';
 import {API_URL} from './api-url.token';
 import {Observable} from 'rxjs';
 
