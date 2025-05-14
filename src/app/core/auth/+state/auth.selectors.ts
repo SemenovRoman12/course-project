@@ -2,7 +2,7 @@ import {authFeature} from './auth.reducer';
 import {createSelector} from '@ngrx/store';
 import {LoadingStatus} from '@models/loading-status.type';
 
-export const { selectAuthStatus } = authFeature;
+export const { selectAuthStatus, selectLoggedUser } = authFeature;
 
 export const selectIsAuthenticated = createSelector(
   selectAuthStatus,

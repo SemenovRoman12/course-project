@@ -1,6 +1,8 @@
 import { Routes } from '@angular/router';
+import {authGuard} from '@auth/services/auth.guard';
+import {CanActivate, Router} from '@angular/router';
 
-
+// @ts-ignore
 export const routes: Routes = [
   {
     path: '',
@@ -17,6 +19,11 @@ export const routes: Routes = [
       {
         path: 'reviews',
         loadComponent: () => import('@features/reviews/reviews-list-container/reviews-list-container.component').then(c => c.ReviewsListContainerComponent),
+      },
+      {
+        path: 'profile',
+        loadComponent: () => import('@features/profile/profile-container/profile-container.component').then(c => c.ProfileContainerComponent),
+        canActivate: [authGuard]
       }
     ]
   },
