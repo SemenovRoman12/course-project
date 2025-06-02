@@ -1,4 +1,4 @@
-import {ApplicationConfig, isDevMode, provideZoneChangeDetection} from '@angular/core';
+import {ApplicationConfig, importProvidersFrom, isDevMode, provideZoneChangeDetection} from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideStore } from '@ngrx/store';
@@ -13,6 +13,7 @@ import * as authEffects from "@auth/+state/auth.effects";
 import {tokenInterceptor} from '@auth/services/token.interceptor';
 import * as reviewEffects from '@features/reviews/+state/reviews.effects';
 import {reviewsFeature} from '@features/reviews/+state/reviews.reducer';
+import {NgxChartsModule} from '@swimlane/ngx-charts';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -33,5 +34,6 @@ export const appConfig: ApplicationConfig = {
       provide: API_URL,
       useValue: environment.api_url,
     },
+    importProvidersFrom(NgxChartsModule),
   ]
 };

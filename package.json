@@ -26,7 +26,7 @@
     "@ngrx/operators": "^18.1.1",
     "@ngrx/store": "^18.1.1",
     "@ngrx/store-devtools": "^18.1.1",
-    "@swimlane/ngx-charts": "^22.0.0-alpha.1",
+    "@swimlane/ngx-charts": "^22.0.0",
     "bootstrap": "^5.3.5",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

@@ -85,9 +85,11 @@ export const getUserEffect = createEffect(
     return actions$.pipe(
       ofType(AuthActions.getUser),
       switchMap(() => {
+        console.log('get user')
         return storageTokenService.getItem()
           ? apiService.get<UserEntity>('/auth_me').pipe(
             map((userData: UserEntity) => AuthActions.getUserSuccess({userData})),
+            tap(() => console.log('User success')),
             catchError((error) => of(AuthActions.getUserFailure(error)))
           )
           : of()
