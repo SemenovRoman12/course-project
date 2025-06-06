@@ -1,4 +1,4 @@
-import {RegisterUser, SignAuthRequest} from '../models/sign.auth.model';
+import {RegisterUser, SignAuthRequest} from '@auth/models/sign.auth.model';
 
 export const userAuthRequestAdapter = {
   AuthToRequest(userData: RegisterUser): SignAuthRequest {

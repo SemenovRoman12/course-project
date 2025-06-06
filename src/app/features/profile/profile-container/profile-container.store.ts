@@ -6,9 +6,9 @@ import {catchError, filter, of, switchMap, tap, withLatestFrom} from 'rxjs';
 import {ApiService} from '@core/http/api.service';
 import {AuthFacade} from '@auth/auth.facade';
 
-export interface UserActivities {
+export interface UserActivitiesEntity {
   id: number;
-  user_id: UserEntity;
+  user: UserEntity;
   date: string;         // ISO date string
   steps: number;
   distance: number;     // км
@@ -21,7 +21,7 @@ export interface UserActivities {
 }
 
 export interface UserActivitiesState {
-  activities: UserActivities[];
+  activities: UserActivitiesEntity[];
   activitiesStatus: LoadingStatus;
   error: Error | null;
 }
@@ -42,7 +42,7 @@ export class ProfileContainerStoreService extends ComponentStore<UserActivitiesS
     })
   }
 
-  public readonly setActivities = this.updater<UserActivities[]>((state, activities) => ({
+  public readonly setActivities = this.updater<UserActivitiesEntity[]>((state, activities) => ({
     ...state,
     activities,
   }));
@@ -62,10 +62,9 @@ export class ProfileContainerStoreService extends ComponentStore<UserActivitiesS
       tap(() => this.setStatus('loading' as const)),
       withLatestFrom(this.user$),
       switchMap(([, user]) =>
-        this.apiService.get<UserActivities[]>(`/activities?_relations=users&user_id=${user.id}`).pipe(
+        this.apiService.get<UserActivitiesEntity[]>(`/activities?_relations=users&user_id=${user.id}`).pipe(
           tap((activities) => {
             this.setActivities(activities);
-            console.log(activities)
             this.setStatus('loaded' as const);
           }),
           catchError((error: Error) => {

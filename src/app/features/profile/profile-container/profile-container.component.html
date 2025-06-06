@@ -1,8 +1,9 @@
 <ng-container
   *ngrxLet="{
-    user: user$
+    user: user$,
+    profileActivityData: profileActivityData$
   } as vm"
 >
   <profile [user]="vm.user"></profile>
-  <profile-charts></profile-charts>
+  <profile-charts [chartData]="vm.profileActivityData"></profile-charts>
 </ng-container>

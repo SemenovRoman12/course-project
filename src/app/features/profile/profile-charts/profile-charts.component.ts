@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, ElementRef, HostListener, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, Input, OnDestroy, OnInit} from '@angular/core';
 import {BarChartModule, Color, ScaleType} from "@swimlane/ngx-charts";
 import {
     MatExpansionPanel,
@@ -6,42 +6,27 @@ import {
     MatExpansionPanelHeader,
     MatExpansionPanelTitle
 } from "@angular/material/expansion";
+import {debounceTime, fromEvent, Subscription} from 'rxjs';
+import {JsonPipe} from '@angular/common';
 
 @Component({
   selector: 'profile-charts',
   standalone: true,
-    imports: [
-        BarChartModule,
-        MatExpansionPanel,
-        MatExpansionPanelContent,
-        MatExpansionPanelHeader,
-        MatExpansionPanelTitle
-    ],
+  imports: [
+    BarChartModule,
+    MatExpansionPanel,
+    MatExpansionPanelContent,
+    MatExpansionPanelHeader,
+    MatExpansionPanelTitle,
+    JsonPipe
+  ],
   templateUrl: './profile-charts.component.html',
   styleUrl: './profile-charts.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ProfileChartsComponent implements OnInit {
-  constructor(private el: ElementRef) {}
+export class ProfileChartsComponent implements OnInit, OnDestroy {
 
-  ngOnInit(): void {
-    this.updateChartSize();
-  }
-
-  @HostListener('window:resize', ['$event'])
-  onResize() {
-    this.updateChartSize();
-  }
-
-  updateChartSize(): void {
-    const container = this.el.nativeElement.querySelector('.chart');
-    if (container) {
-      const containerWidth = container.clientWidth;
-      const newWidth = Math.min(Math.max(containerWidth, 320), 520);
-      const newHeight = Math.round(newWidth * 0.6);
-      this.view = [newWidth, newHeight];
-    }
-  }
+  @Input() chartData: any = [];
 
   data = [
     { name: 'Пн', value: 12000 },
@@ -69,4 +54,50 @@ export class ProfileChartsComponent implements OnInit {
   xAxisLabel: string = '';
   showYAxisLabel: boolean = false;
   yAxisLabel: string = '';
+
+  // Существующие переменные...
+
+  private resizeSubscription?: Subscription;
+
+  constructor() {
+    // Подписка на изменение размера окна
+    this.resizeSubscription = fromEvent(window, 'resize')
+      .pipe(debounceTime(300))
+      .subscribe(() => {
+      });
+  }
+
+  ngOnInit() {
+  }
+
+  ngOnDestroy() {
+    this.resizeSubscription?.unsubscribe();
+  }
+
+  getResponsiveView(): [number, number] {
+    const width = window.innerWidth;
+
+    if (width < 576) { // xs
+      return [300, 200];
+    } else if (width < 768) { // sm
+      return [400, 250];
+    } else if (width < 992) { // md
+      return [350, 280];
+    } else if (width < 1200) { // lg
+      return [400, 300];
+    } else { // xl
+      return [450, 350];
+    }
+  }
+
+  // Примеры данных для графиков
+  stepsData = [
+    { name: 'Пн', value: 8000 },
+    { name: 'Вт', value: 12000 },
+    { name: 'Ср', value: 9500 },
+    { name: 'Чт', value: 11000 },
+    { name: 'Пт', value: 7500 },
+    { name: 'Сб', value: 15000 },
+    { name: 'Вс', value: 13000 }
+  ];
 }

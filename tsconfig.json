@@ -25,12 +25,14 @@
     ],
     "baseUrl": "src",
     "paths": {
+      "@core/*": ["app/core/*"],
+      "@features/*": ["app/features/*"],
       "@layouts/*": ["app/layouts/*"],
+      "@pages/*": ["app/pages/*"],
+      "@shared/*":["app/shared/*"],
+      "@utils/*": ["app/utils/*"],
       "@models/*": ["app/core/models/*"],
       "@auth/*": ["app/core/auth/*"],
-      "@pages/*": ["app/pages/*"],
-      "@core/*": ["app/core/*"],
-      "@features/*": ["app/features/*"]
     }
   },
   "angularCompilerOptions": {

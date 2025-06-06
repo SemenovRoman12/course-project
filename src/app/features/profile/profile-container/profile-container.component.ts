@@ -4,11 +4,13 @@ import {ProfileComponent} from '@features/profile/profile/profile.component';
 import {LetDirective} from '@ngrx/component';
 import {ProfileChartsComponent} from '@features/profile/profile-charts/profile-charts.component';
 import {
-  ProfileContainerStoreService,
+  ProfileContainerStoreService, UserActivitiesEntity,
   UserActivitiesState
 } from '@features/profile/profile-container/profile-container.store';
-import {interval, Observable, tap} from 'rxjs';
+import {interval, map, Observable, tap} from 'rxjs';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {UserActivitiesAdapter} from '@utils/profile/charts-data.adapter';
+import {UserActivitiesVM} from '@features/profile/models/user-activities.model';
 
 @Component({
   selector: 'profile-container',
@@ -30,16 +32,17 @@ export class ProfileContainerComponent implements OnInit {
   private readonly profileStore = inject(ProfileContainerStoreService);
   private readonly destroyRef = inject(DestroyRef);
 
-  public readonly profileActivityData$ = this.profileStore.select(state => ({
-    activities: state.activities,
-    activitiesStatus: state.activitiesStatus,
-    error: state.error,
-  }));
+  public readonly profileActivityData$: Observable<UserActivitiesVM[]> = this.profileStore.select(state => state.activities).pipe(
+    map(activitiesList =>
+        activitiesList.map((activities) => UserActivitiesAdapter.activitiesFromEntityToVm(activities))
+    )
+  );
 
   ngOnInit() {
     this.user$.pipe(
       tap(() => this.profileStore.loadActivities()),
       takeUntilDestroyed(this.destroyRef)
     ).subscribe()
+   this.profileActivityData$.subscribe((data) => console.log(data, 'data'))
   }
 }

@@ -6,7 +6,7 @@ import {catchError, map, of, switchMap, tap} from 'rxjs';
 import {SignAuthResponse, SignAuthRequest, SignAuthUser} from '../models/sign.auth.model';
 import {StorageTokenService} from '../services/storage-token.service';
 import {Router} from '@angular/router';
-import {userAuthRequestAdapter} from '../services/user-auth-request.adapter';
+import {userAuthRequestAdapter} from '@utils/auth/user-auth-request.adapter';
 import {UserEntity} from '@models/user.model';
 
 export const registerEffect = createEffect(
@@ -85,11 +85,9 @@ export const getUserEffect = createEffect(
     return actions$.pipe(
       ofType(AuthActions.getUser),
       switchMap(() => {
-        console.log('get user')
         return storageTokenService.getItem()
           ? apiService.get<UserEntity>('/auth_me').pipe(
             map((userData: UserEntity) => AuthActions.getUserSuccess({userData})),
-            tap(() => console.log('User success')),
             catchError((error) => of(AuthActions.getUserFailure(error)))
           )
           : of()

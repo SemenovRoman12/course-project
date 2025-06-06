@@ -1,0 +1,29 @@
+.wrapper-charts {
+  padding: 1rem;
+}
+
+.chart {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.chart:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+
+.panel-header .mat-panel-title {
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.chart-container {
+  padding: 1rem;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
