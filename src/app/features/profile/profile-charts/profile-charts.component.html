@@ -11,14 +11,14 @@
             <div class="chart-container">
               <ngx-charts-bar-vertical
                 [view]="getResponsiveView()"
-                [scheme]="colorScheme"
+                [scheme]="mainConfig.colorScheme"
                 [results]="stepsData"
-                [gradient]="gradient"
-                [xAxis]="showXAxis"
-                [yAxis]="showYAxis"
-                [legend]="showLegend"
-                [showXAxisLabel]="showXAxisLabel"
-                [showYAxisLabel]="showYAxisLabel"
+                [gradient]="mainConfig.gradient"
+                [xAxis]="mainConfig.showXAxis"
+                [yAxis]="mainConfig.showYAxis"
+                [legend]="mainConfig.showLegend"
+                [showXAxisLabel]="mainConfig.showXAxisLabel"
+                [showYAxisLabel]="mainConfig.showYAxisLabel"
                 [xAxisLabel]="'Дни'"
                 [yAxisLabel]="'Количество шагов'"
               ></ngx-charts-bar-vertical>

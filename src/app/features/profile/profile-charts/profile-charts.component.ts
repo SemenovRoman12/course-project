@@ -8,6 +8,8 @@ import {
 } from "@angular/material/expansion";
 import {debounceTime, fromEvent, Subscription} from 'rxjs';
 import {JsonPipe} from '@angular/common';
+import {UserActivitiesVM} from '@features/profile/models/user-activities.model';
+import {ChartMainConfig} from '@features/profile/models/charts.model';
 
 @Component({
   selector: 'profile-charts',
@@ -24,54 +26,49 @@ import {JsonPipe} from '@angular/common';
   styleUrl: './profile-charts.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ProfileChartsComponent implements OnInit, OnDestroy {
+export class ProfileChartsComponent implements OnDestroy {
 
-  @Input() chartData: any = [];
+  @Input() chartData!: UserActivitiesVM[];
 
-  data = [
-    { name: 'Пн', value: 12000 },
-    { name: 'Вт', value: 15000 },
-    { name: 'Ср', value: 8000 },
-    { name: 'Чт', value: 14000 },
-    { name: 'Пт', value: 10000 },
-    { name: 'Сб', value: 20000 },
-    { name: 'Вс', value: 17000 },
+  public readonly stepsConfig = {
+    stepsData: this.chartData[0].steps
+  }
+
+  stepsData = [
+    { name: 'Пн', value: 8000 },
+    { name: 'Вт', value: 12000 },
+    { name: 'Ср', value: 9500 },
+    { name: 'Чт', value: 11000 },
+    { name: 'Пт', value: 7500 },
+    { name: 'Сб', value: 15000 },
+    { name: 'Вс', value: 13000 }
   ];
 
-  colorScheme: Color = {
-    name: 'custom',
-    selectable: true,
-    group: ScaleType.Ordinal,
-    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
-  };
-
-  view: [number, number] = [520, 312];
-  showXAxis: boolean = true;
-  showYAxis: boolean = false;
-  gradient: boolean = false;
-  showLegend: boolean = false;
-  showXAxisLabel: boolean = true;
-  xAxisLabel: string = '';
-  showYAxisLabel: boolean = false;
-  yAxisLabel: string = '';
-
-  // Существующие переменные...
+  public readonly mainConfig: ChartMainConfig = {
+    view: [520, 312],
+    colorScheme: {
+      name: 'custom',
+      selectable: true,
+      group: ScaleType.Ordinal,
+      domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
+    },
+    showXAxis: true,
+    showYAxis: false,
+    gradient: false,
+    showLegend: false,
+    showXAxisLabel: true,
+    xAxisLabel: '',
+    showYAxisLabel: false,
+    yAxisLabel: '',
+  }
 
   private resizeSubscription?: Subscription;
 
   constructor() {
-    // Подписка на изменение размера окна
     this.resizeSubscription = fromEvent(window, 'resize')
       .pipe(debounceTime(300))
       .subscribe(() => {
       });
-  }
-
-  ngOnInit() {
-  }
-
-  ngOnDestroy() {
-    this.resizeSubscription?.unsubscribe();
   }
 
   getResponsiveView(): [number, number] {
@@ -90,14 +87,7 @@ export class ProfileChartsComponent implements OnInit, OnDestroy {
     }
   }
 
-  // Примеры данных для графиков
-  stepsData = [
-    { name: 'Пн', value: 8000 },
-    { name: 'Вт', value: 12000 },
-    { name: 'Ср', value: 9500 },
-    { name: 'Чт', value: 11000 },
-    { name: 'Пт', value: 7500 },
-    { name: 'Сб', value: 15000 },
-    { name: 'Вс', value: 13000 }
-  ];
+  ngOnDestroy() {
+    this.resizeSubscription?.unsubscribe();
+  }
 }
