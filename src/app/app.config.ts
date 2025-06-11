@@ -14,6 +14,8 @@ import {tokenInterceptor} from '@auth/services/token.interceptor';
 import * as reviewEffects from '@features/reviews/+state/reviews.effects';
 import {reviewsFeature} from '@features/reviews/+state/reviews.reducer';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
+import {profileFeature} from '@features/profile/data-access/+state/profile.reducer';
+import * as profileEffect from '@features/profile/data-access/+state/profile.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -21,11 +23,13 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideStore({
       [authFeature.name]: authFeature.reducer,
-      [reviewsFeature.name]: reviewsFeature.reducer
+      [reviewsFeature.name]: reviewsFeature.reducer,
+      [profileFeature.name]: profileFeature.reducer,
     }),
     provideEffects(
       authEffects,
       reviewEffects,
+      profileEffect,
     ),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
     provideHttpClient(withInterceptors([tokenInterceptor])),

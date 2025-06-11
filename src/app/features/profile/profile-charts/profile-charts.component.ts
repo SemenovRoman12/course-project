@@ -1,5 +1,5 @@
-import {ChangeDetectionStrategy, Component, ElementRef, Input, OnDestroy, OnInit} from '@angular/core';
-import {BarChartModule, Color, ScaleType} from "@swimlane/ngx-charts";
+import {ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {BarChartModule, ScaleType} from "@swimlane/ngx-charts";
 import {
     MatExpansionPanel,
     MatExpansionPanelContent,
@@ -26,23 +26,40 @@ import {ChartMainConfig} from '@features/profile/models/charts.model';
   styleUrl: './profile-charts.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ProfileChartsComponent implements OnDestroy {
+export class ProfileChartsComponent implements OnDestroy, OnInit {
+  private _activitiesData: UserActivitiesVM[] = [];
 
-  @Input() chartData!: UserActivitiesVM[];
+  @Input({required: true})
+  set activitiesData(data: UserActivitiesVM[]) {
+    this._activitiesData = data;
+    this.chartsDataConfig = {
+      stepsData: [
+        { name: '11.06', value: data[0].steps},
+        { name: 'Вт', value: 12000 },
+        { name: 'Ср', value: 9500 },
+        { name: 'Чт', value: 11000 },
+        { name: 'Пт', value: 7500 },
+        { name: 'Сб', value: 15000 },
+        { name: 'Вс', value: 13000 }
+      ]
+    }
+  };
 
-  public readonly stepsConfig = {
-    stepsData: this.chartData[0].steps
+  public chartsDataConfig = {
+    stepsData: [
+      { name: '11.06', value: 1},
+      { name: 'Вт', value: 12000 },
+      { name: 'Ср', value: 9500 },
+      { name: 'Чт', value: 11000 },
+      { name: 'Пт', value: 7500 },
+      { name: 'Сб', value: 15000 },
+      { name: 'Вс', value: 13000 }
+    ],
   }
 
-  stepsData = [
-    { name: 'Пн', value: 8000 },
-    { name: 'Вт', value: 12000 },
-    { name: 'Ср', value: 9500 },
-    { name: 'Чт', value: 11000 },
-    { name: 'Пт', value: 7500 },
-    { name: 'Сб', value: 15000 },
-    { name: 'Вс', value: 13000 }
-  ];
+  ngOnInit() {
+    console.log(this._activitiesData)
+  }
 
   public readonly mainConfig: ChartMainConfig = {
     view: [520, 312],
@@ -74,13 +91,13 @@ export class ProfileChartsComponent implements OnDestroy {
   getResponsiveView(): [number, number] {
     const width = window.innerWidth;
 
-    if (width < 576) { // xs
+    if (width < 576) {
       return [300, 200];
-    } else if (width < 768) { // sm
+    } else if (width < 768) {
       return [400, 250];
-    } else if (width < 992) { // md
+    } else if (width < 992) {
       return [350, 280];
-    } else if (width < 1200) { // lg
+    } else if (width < 1200) {
       return [400, 300];
     } else { // xl
       return [450, 350];

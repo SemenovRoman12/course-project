@@ -1,9 +1,20 @@
 <ng-container
   *ngrxLet="{
     user: user$,
-    profileActivityData: profileActivityData$
+    activitiesData: activitiesData$,
+    profileStatus: profileStatus$,
   } as vm"
 >
-  <profile [user]="vm.user"></profile>
-  <profile-charts [chartData]="vm.profileActivityData"></profile-charts>
+  @switch (vm.profileStatus) {
+    @case ('loaded') {
+      <profile [user]="vm.user"></profile>
+      <profile-charts [activitiesData]="vm.activitiesData"></profile-charts>
+    }
+    @case ('loading') {
+      <mat-progress-bar mode="indeterminate"/>
+    }
+    @case ('error') {
+      ошибка
+    }
+  }
 </ng-container>

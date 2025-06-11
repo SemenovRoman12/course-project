@@ -2,7 +2,7 @@ import {inject, Injectable} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {RegisterUser, SignAuthUser} from './models/sign.auth.model';
 import {AuthActions} from './+state/auth.actions';
-import {selectIsAuthenticated, selectLoggedUser} from './+state/auth.selectors';
+import {selectAuthStatus, selectIsAuthenticated, selectLoggedUser} from './+state/auth.selectors';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +12,7 @@ export class AuthFacade {
 
   public readonly isAuthenticated$ = this.store.select(selectIsAuthenticated);
   public readonly loggedUser$ = this.store.select(selectLoggedUser);
+  public readonly authStatus$ = this.store.select(selectAuthStatus);
 
   public register(userData: RegisterUser) {
     this.store.dispatch(AuthActions.register({ userData }));

@@ -1,16 +1,16 @@
-import {AfterContentInit, ChangeDetectionStrategy, Component, DestroyRef, inject, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, OnInit} from '@angular/core';
 import {AuthFacade} from '@auth/auth.facade';
 import {ProfileComponent} from '@features/profile/profile/profile.component';
 import {LetDirective} from '@ngrx/component';
 import {ProfileChartsComponent} from '@features/profile/profile-charts/profile-charts.component';
-import {
-  ProfileContainerStoreService, UserActivitiesEntity,
-  UserActivitiesState
-} from '@features/profile/profile-container/profile-container.store';
-import {interval, map, Observable, tap} from 'rxjs';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {UserActivitiesAdapter} from '@utils/profile/charts-data.adapter';
+import {ProfileFacade} from '@features/profile/data-access/profile.facade';
+import {MatProgressBar} from '@angular/material/progress-bar';
+import {map, Observable} from 'rxjs';
+import {UserEntity} from '@models/user.model';
+import {UserActivitiesEntity} from '@features/profile/data-access/+state/profile.reducer';
+import {LoadingStatus} from '@models/loading-status.type';
 import {UserActivitiesVM} from '@features/profile/models/user-activities.model';
+import {UserActivitiesAdapter} from '@utils/profile/activities-data.adapter';
 
 @Component({
   selector: 'profile-container',
@@ -19,30 +19,25 @@ import {UserActivitiesVM} from '@features/profile/models/user-activities.model';
     ProfileComponent,
     LetDirective,
     ProfileChartsComponent,
-
+    MatProgressBar,
   ],
   templateUrl: './profile-container.component.html',
   styleUrl: './profile-container.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [ProfileContainerStoreService],
 })
 export class ProfileContainerComponent implements OnInit {
+  private readonly profileFacade = inject(ProfileFacade);
   private readonly authFacade = inject(AuthFacade);
-  public readonly user$ = this.authFacade.loggedUser$;
-  private readonly profileStore = inject(ProfileContainerStoreService);
-  private readonly destroyRef = inject(DestroyRef);
 
-  public readonly profileActivityData$: Observable<UserActivitiesVM[]> = this.profileStore.select(state => state.activities).pipe(
-    map(activitiesList =>
-        activitiesList.map((activities) => UserActivitiesAdapter.activitiesFromEntityToVm(activities))
+  public readonly user$: Observable<UserEntity> = this.authFacade.loggedUser$;
+  public readonly activitiesData$: Observable<UserActivitiesVM[]> = this.profileFacade.activities$.pipe(
+    map((activitiesList) => activitiesList.map(
+      (activities) => UserActivitiesAdapter.activitiesFromEntityToVm(activities))
     )
   );
+  public readonly profileStatus$: Observable<LoadingStatus> = this.profileFacade.profileStatus$;
 
   ngOnInit() {
-    this.user$.pipe(
-      tap(() => this.profileStore.loadActivities()),
-      takeUntilDestroyed(this.destroyRef)
-    ).subscribe()
-   this.profileActivityData$.subscribe((data) => console.log(data, 'data'))
+    this.profileFacade.init()
   }
 }
