@@ -1,26 +1,156 @@
 <div class="wrapper-charts">
   <div class="container-fluid">
-    <div class="row g-3">
-
-      <div class="col-12 col-md-6">
-        <mat-expansion-panel class="chart h-100">
+    <div class="row g-3 charts-grid">
+      <!-- График шагов -->
+      <div class="col-lg-6 col-md-6 col-sm-12">
+        <mat-expansion-panel class="chart-panel">
           <mat-expansion-panel-header class="panel-header">
             <mat-panel-title>Шаги</mat-panel-title>
           </mat-expansion-panel-header>
           <ng-template matExpansionPanelContent>
             <div class="chart-container">
               <ngx-charts-bar-vertical
-                [view]="getResponsiveView()"
+                [view]="mainConfig.view"
                 [scheme]="mainConfig.colorScheme"
-                [results]="chartsDataConfig.stepsData"
+                [results]="chartsDataConfig.steps"
                 [gradient]="mainConfig.gradient"
                 [xAxis]="mainConfig.showXAxis"
                 [yAxis]="mainConfig.showYAxis"
                 [legend]="mainConfig.showLegend"
                 [showXAxisLabel]="mainConfig.showXAxisLabel"
                 [showYAxisLabel]="mainConfig.showYAxisLabel"
-                [xAxisLabel]="'Дни'"
-                [yAxisLabel]="'Количество шагов'"
+                [xAxisLabel]="mainConfig.xAxisLabel"
+                [yAxisLabel]="mainConfig.yAxisLabel"
+              ></ngx-charts-bar-vertical>
+            </div>
+          </ng-template>
+        </mat-expansion-panel>
+      </div>
+
+      <!-- График активных минут -->
+      <div class="col-lg-6 col-md-6 col-sm-12">
+        <mat-expansion-panel class="chart-panel">
+          <mat-expansion-panel-header class="panel-header">
+            <mat-panel-title>Активные минуты</mat-panel-title>
+          </mat-expansion-panel-header>
+          <ng-template matExpansionPanelContent>
+            <div class="chart-container">
+              <ngx-charts-bar-vertical
+                [view]="mainConfig.view"
+                [scheme]="mainConfig.colorScheme"
+                [results]="chartsDataConfig.activeMinutes"
+                [gradient]="mainConfig.gradient"
+                [xAxis]="mainConfig.showXAxis"
+                [yAxis]="mainConfig.showYAxis"
+                [legend]="mainConfig.showLegend"
+                [showXAxisLabel]="mainConfig.showXAxisLabel"
+                [showYAxisLabel]="mainConfig.showYAxisLabel"
+                [xAxisLabel]="mainConfig.xAxisLabel"
+                [yAxisLabel]="mainConfig.yAxisLabel"
+              ></ngx-charts-bar-vertical>
+            </div>
+          </ng-template>
+        </mat-expansion-panel>
+      </div>
+
+      <!-- График калорий -->
+      <div class="col-lg-6 col-md-6 col-sm-12">
+        <mat-expansion-panel class="chart-panel">
+          <mat-expansion-panel-header class="panel-header">
+            <mat-panel-title>Калории</mat-panel-title>
+          </mat-expansion-panel-header>
+          <ng-template matExpansionPanelContent>
+            <div class="chart-container">
+              <ngx-charts-bar-vertical
+                [view]="mainConfig.view"
+                [scheme]="mainConfig.colorScheme"
+                [results]="chartsDataConfig.calories"
+                [gradient]="mainConfig.gradient"
+                [xAxis]="mainConfig.showXAxis"
+                [yAxis]="mainConfig.showYAxis"
+                [legend]="mainConfig.showLegend"
+                [showXAxisLabel]="mainConfig.showXAxisLabel"
+                [showYAxisLabel]="mainConfig.showYAxisLabel"
+                [xAxisLabel]="mainConfig.xAxisLabel"
+                [yAxisLabel]="mainConfig.yAxisLabel"
+              ></ngx-charts-bar-vertical>
+            </div>
+          </ng-template>
+        </mat-expansion-panel>
+      </div>
+
+      <!-- График дистанции -->
+      <div class="col-lg-6 col-md-6 col-sm-12">
+        <mat-expansion-panel class="chart-panel">
+          <mat-expansion-panel-header class="panel-header">
+            <mat-panel-title>Дистанция</mat-panel-title>
+          </mat-expansion-panel-header>
+          <ng-template matExpansionPanelContent>
+            <div class="chart-container">
+              <ngx-charts-bar-vertical
+                [view]="mainConfig.view"
+                [scheme]="mainConfig.colorScheme"
+                [results]="chartsDataConfig.distance"
+                [gradient]="mainConfig.gradient"
+                [xAxis]="mainConfig.showXAxis"
+                [yAxis]="mainConfig.showYAxis"
+                [legend]="mainConfig.showLegend"
+                [showXAxisLabel]="mainConfig.showXAxisLabel"
+                [showYAxisLabel]="mainConfig.showYAxisLabel"
+                [xAxisLabel]="mainConfig.xAxisLabel"
+                [yAxisLabel]="mainConfig.yAxisLabel"
+              ></ngx-charts-bar-vertical>
+            </div>
+          </ng-template>
+        </mat-expansion-panel>
+      </div>
+
+      <!-- График среднего пульса -->
+      <div class="col-lg-6 col-md-6 col-sm-12">
+        <mat-expansion-panel class="chart-panel">
+          <mat-expansion-panel-header class="panel-header">
+            <mat-panel-title>Средний пульс</mat-panel-title>
+          </mat-expansion-panel-header>
+          <ng-template matExpansionPanelContent>
+            <div class="chart-container">
+              <ngx-charts-bar-vertical
+                [view]="mainConfig.view"
+                [scheme]="mainConfig.colorScheme"
+                [results]="chartsDataConfig.heartRateAvg"
+                [gradient]="mainConfig.gradient"
+                [xAxis]="mainConfig.showXAxis"
+                [yAxis]="mainConfig.showYAxis"
+                [legend]="mainConfig.showLegend"
+                [showXAxisLabel]="mainConfig.showXAxisLabel"
+                [showYAxisLabel]="mainConfig.showYAxisLabel"
+                [xAxisLabel]="mainConfig.xAxisLabel"
+                [yAxisLabel]="mainConfig.yAxisLabel"
+              ></ngx-charts-bar-vertical>
+            </div>
+          </ng-template>
+        </mat-expansion-panel>
+      </div>
+
+      <!-- График качества сна -->
+      <div class="col-lg-6 col-md-6 col-sm-12">
+        <mat-expansion-panel class="chart-panel">
+          <mat-expansion-panel-header class="panel-header">
+            <mat-panel-title>Качество сна</mat-panel-title>
+          </mat-expansion-panel-header>
+          <ng-template matExpansionPanelContent>
+            <div class="chart-container">
+              <ngx-charts-bar-vertical
+                [view]="mainConfig.view"
+                [scheme]="mainConfig.colorScheme"
+                [results]="chartsDataConfig.sleepQuality"
+                [gradient]="mainConfig.gradient"
+                [xAxis]="mainConfig.showXAxis"
+                [yAxis]="mainConfig.showYAxis"
+                [legend]="mainConfig.showLegend"
+                [showXAxisLabel]="mainConfig.showXAxisLabel"
+                [showYAxisLabel]="mainConfig.showYAxisLabel"
+                [xAxisLabel]="mainConfig.xAxisLabel"
+                [yAxisLabel]="mainConfig.yAxisLabel"
               ></ngx-charts-bar-vertical>
             </div>
           </ng-template>

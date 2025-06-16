@@ -15,3 +15,17 @@ export interface ChartMainConfig {
   roundEdges?: boolean;
   barPadding?: number;
 }
+
+export interface ChartData {
+  name: string;
+  value: number;
+}
+
+export interface ActivitiesData {
+  steps: ChartData[];
+  activeMinutes: ChartData[];
+  calories: ChartData[];
+  distance: ChartData[];
+  heartRateAvg: ChartData[];
+  sleepQuality: ChartData[];
+}

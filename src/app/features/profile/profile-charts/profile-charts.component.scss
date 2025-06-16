@@ -1,29 +1,31 @@
 .wrapper-charts {
-  padding: 1rem;
+  padding: 20px 0;
+
+  .charts-grid {
+    align-items: stretch;
+  }
+  .chart-panel {
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+    flex: none;
+
+    &:hover {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .panel-header {
+      background-color: #f8f9fa;
+    }
+
+    .chart-container {
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 350px;
+      background-color: #fff;
+    }
+  }
 }
-
-.chart {
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease;
-}
-
-.chart:hover {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-}
-
-
-.panel-header .mat-panel-title {
-  font-weight: 500;
-  font-size: 1.1rem;
-}
-
-.chart-container {
-  padding: 1rem;
-  min-height: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-
