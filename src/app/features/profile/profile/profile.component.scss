@@ -1,13 +1,9 @@
-.wrapper-charts {
-  width: 100%;
-  padding: 0 8px;
-  grid-template-columns: 1fr 1fr;
+.profile-content {
+  position: relative;
+  padding: 0 0 16px 0;
 }
 
-.chart {
-  width: 100%;
-  max-width: 520px;
-  margin: 0 auto;
+.profile-actions {
+  position: absolute;
+  left: 85%;
 }
-
-

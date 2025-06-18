@@ -1,0 +1,39 @@
+<mat-dialog-content>
+  <h4>Редактирование</h4>
+  <form
+    [formGroup]="profileForm"
+    class="profile-form"
+  >
+    <mat-form-field>
+      <mat-label>Имя</mat-label>
+      <input
+        matInput
+        formControlName="name"
+      >
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Рост</mat-label>
+      <input
+        matInput
+        formControlName="height"
+      >
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Вес</mat-label>
+      <input
+        matInput
+        formControlName="weight"
+      >
+    </mat-form-field>
+  </form>
+  <mat-dialog-actions class="profile-buttons">
+    <button
+      mat-raised-button
+      (click)="onDialogClose()"
+    >Отмена</button>
+    <button
+      mat-flat-button
+      (click)="onDialogSave()"
+    >Сохранить</button>
+  </mat-dialog-actions>
+</mat-dialog-content>

@@ -1,6 +1,6 @@
 import {inject, Injectable} from '@angular/core';
 import {Store} from '@ngrx/store';
-import {RegisterUser, SignAuthUser} from './models/sign.auth.model';
+import {ChangeProfileDataPayload, RegisterUser, SignAuthUser} from './models/sign.auth.model';
 import {AuthActions} from './+state/auth.actions';
 import {selectAuthStatus, selectIsAuthenticated, selectLoggedUser} from './+state/auth.selectors';
 
@@ -28,5 +28,9 @@ export class AuthFacade {
 
   public getUser() {
     this.store.dispatch(AuthActions.getUser());
+  }
+
+  public changeProfile(data: ChangeProfileDataPayload) {
+    this.store.dispatch(AuthActions.changeProfileData({data}));
   }
 }

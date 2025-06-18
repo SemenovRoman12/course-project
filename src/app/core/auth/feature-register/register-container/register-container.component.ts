@@ -18,5 +18,6 @@ export class RegisterContainerComponent {
 
   public registerSubmit(data: RegisterUser) {
     this.authFacade.register(data);
+    console.log(data);
   }
 }

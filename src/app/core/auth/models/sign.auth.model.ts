@@ -3,6 +3,8 @@ import {UserEntity} from '@models/user.model';
 export interface RegisterUser {
   name: string;
   email: string;
+  //gender: string;
+  // age: any;
   password: string;
 }
 
@@ -19,3 +21,11 @@ export interface SignAuthUser {
 export interface SignAuthRequest extends UserEntity {
   password: string;
 }
+
+export interface ChangeProfileDataPayload {
+  name?: string;
+  weight?: number
+  height?: number
+}
+
+export interface ChangeProfileDataResponse extends Required<UserEntity> {}

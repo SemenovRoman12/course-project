@@ -1,4 +1,18 @@
-<p>{{user.name}}</p>
-<p>{{user.email}}</p>
+<mat-card class="profile-content">
+  <mat-card-content>
+    <p>Имя: {{user.name}}</p>
+    <p>Рост: {{user.height}}</p>
+    <p>Вес: {{user.weight}}</p>
+  </mat-card-content>
+  <mat-card-actions class="profile-actions">
+    <button
+      mat-icon-button
+      (click)="onOpenEditProfileDialog()"
+    >
+      <mat-icon>edit</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>
+
 
 

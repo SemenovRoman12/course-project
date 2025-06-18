@@ -2,14 +2,23 @@ import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {inject} from '@angular/core';
 import {ApiService} from '../../http/api.service';
 import {AuthActions} from './auth.actions';
-import {catchError, map, of, switchMap, tap} from 'rxjs';
-import {SignAuthResponse, SignAuthRequest, SignAuthUser} from '../models/sign.auth.model';
+import {catchError, map, of, switchMap, tap, withLatestFrom} from 'rxjs';
+import {
+  SignAuthResponse,
+  SignAuthRequest,
+  SignAuthUser,
+  ChangeProfileDataPayload,
+  ChangeProfileDataResponse
+} from '../models/sign.auth.model';
 import {StorageTokenService} from '../services/storage-token.service';
 import {Router} from '@angular/router';
 import {userAuthRequestAdapter} from '@utils/auth/user-auth-request.adapter';
 import {UserEntity} from '@models/user.model';
+import {AuthFacade} from '@auth/auth.facade';
+import {Store} from '@ngrx/store';
+import {selectLoggedUser} from '@auth/+state/auth.selectors';
 
-export const registerEffect = createEffect(
+export const registerEffect$ = createEffect(
   (
     actions$ = inject(Actions),
     apiService = inject(ApiService)
@@ -27,7 +36,7 @@ export const registerEffect = createEffect(
   }, {functional: true}
 );
 
-export const registerSuccessEffect = createEffect(
+export const registerSuccessEffect$ = createEffect(
   (
     actions$ = inject(Actions),
     storageTokenService = inject(StorageTokenService),
@@ -43,7 +52,7 @@ export const registerSuccessEffect = createEffect(
   }, {functional: true, dispatch: false}
 );
 
-export const loginEffect = createEffect(
+export const loginEffect$ = createEffect(
   (
     actions$ = inject(Actions),
     apiService = inject(ApiService),
@@ -60,7 +69,7 @@ export const loginEffect = createEffect(
   }, {functional: true}
 );
 
-export const loginSuccessEffect = createEffect(
+export const loginSuccessEffect$ = createEffect(
   (
     actions$ = inject(Actions),
     storageTokenService = inject(StorageTokenService),
@@ -76,7 +85,7 @@ export const loginSuccessEffect = createEffect(
   }, {functional: true, dispatch: false}
 );
 
-export const getUserEffect = createEffect(
+export const getUserEffect$ = createEffect(
   (
     actions$ = inject(Actions),
     storageTokenService = inject(StorageTokenService),
@@ -96,7 +105,7 @@ export const getUserEffect = createEffect(
   }, {functional: true}
 );
 
-export const logoutEffect = createEffect(
+export const logoutEffect$ = createEffect(
   (
     actions$ = inject(Actions),
     storageTokenService = inject(StorageTokenService),
@@ -110,4 +119,25 @@ export const logoutEffect = createEffect(
       })
     );
   }, {functional: true, dispatch: false}
+);
+
+
+
+export const changerProfileEffect$ = createEffect(
+  (
+    actions$ = inject(Actions),
+    apiService = inject(ApiService),
+    store = inject(Store),
+  ) => {
+    return actions$.pipe(
+      ofType(AuthActions.changeProfileData),
+      withLatestFrom(store.select(selectLoggedUser)),
+      switchMap(([{data}, user]) => {
+        return apiService.patch<ChangeProfileDataResponse, ChangeProfileDataPayload>(`/users/${user.id}`, data).pipe(
+          map(response => AuthActions.changeProfileDataSuccess({ res: response })),
+          catchError(error => of(AuthActions.changeProfileDataFailure({ error })))
+        );
+      })
+    );
+  }, { functional: true }
 );

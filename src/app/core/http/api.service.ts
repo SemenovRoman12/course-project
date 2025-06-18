@@ -23,8 +23,8 @@ export class ApiService {
     });
   }
 
-  public put<T, D>(url: string, data: D): Observable<T> {
-    return this.http.put<T>(`${this.apiUrl}${url}`, JSON.stringify(data), {
+  public patch<T, D>(url: string, data: D): Observable<T> {
+    return this.http.patch<T>(`${this.apiUrl}${url}`, JSON.stringify(data), {
       headers: this.headers,
     });
   }

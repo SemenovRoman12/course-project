@@ -2,7 +2,7 @@ import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {inject} from '@angular/core';
 import {ProfileActions} from '@features/profile/data-access/+state/profile.actions';
 import {ApiService} from '@core/http/api.service';
-import {catchError, filter, map, of, switchMap, take, withLatestFrom} from 'rxjs';
+import {catchError, filter, map, of, switchMap} from 'rxjs';
 import {UserActivitiesEntity} from '@features/profile/data-access/+state/profile.reducer';
 import {AuthFacade} from '@auth/auth.facade';
 
