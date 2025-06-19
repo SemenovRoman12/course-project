@@ -1,25 +1,32 @@
-<mat-toolbar *ngrxLet="isAuthenticated$ as isAuth" class="bg-light">
+<mat-toolbar *ngrxLet="isAuthenticated$ as isAuth">
   <div class="container d-flex justify-content-between align-items-center flex-wrap">
     <nav class="d-flex align-items-center">
       <ul class="header__nav nav gap-3">
         <li class="header__nav-item">
-          <a class="nav-link text-dark" routerLink="">Главная</a>
+          <a class="nav-link text-decoration-none" routerLink="">Главная</a>
         </li>
         <li class="header__nav-item">
-          <a class="nav-link text-dark" routerLink="/reviews">Отзывы</a>
+          <a class="nav-link" routerLink="/reviews">Отзывы</a>
         </li>
         <li class="header__nav-item">
-          <a class="nav-link text-dark" routerLink="/about">О нас</a>
+          <a class="nav-link" routerLink="/about">О нас</a>
         </li>
         @if (isAuth) {
           <li class="header__nav-item">
-            <a class="nav-link text-dark" routerLink="">Рекомендации</a>
+            <a class="nav-link" routerLink="">Рекомендации</a>
           </li>
         }
       </ul>
     </nav>
 
     <div class="d-flex align-items-center gap-3">
+      <button mat-icon-button (click)="darkMode.set(!darkMode())">
+        @if(darkMode()) {
+          <mat-icon>light_mode</mat-icon>
+        } @else {
+          <mat-icon>dark_mode</mat-icon>
+        }
+      </button>
       @if (isAuth) {
         <logout-button></logout-button>
         <button mat-icon-button routerLink="/profile">
@@ -27,9 +34,9 @@
         </button>
       } @else {
         <div class="d-flex align-items-center gap-2">
-          <a class="text-dark text-decoration-none" routerLink="/login">Вход</a>
+          <a class="text-decoration-none" routerLink="/login">Вход</a>
           <span>/</span>
-          <a class="text-dark text-decoration-none" routerLink="/register">Регистрация</a>
+          <a class="text-decoration-none" routerLink="/register">Регистрация</a>
         </div>
       }
     </div>

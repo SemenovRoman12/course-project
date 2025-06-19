@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, effect, inject, signal} from '@angular/core';
 import {MatToolbar} from '@angular/material/toolbar';
 import {AuthFacade} from '@auth/auth.facade';
 import {LogoutButtonComponent} from '@auth/feature-logut/logout-button/logout-button.component';
@@ -27,4 +27,10 @@ import {MatIconButton} from '@angular/material/button';
 export class HeaderLayoutComponent {
   private readonly authFacade = inject(AuthFacade);
   public readonly isAuthenticated$ = this.authFacade.isAuthenticated$;
+
+  public darkMode = signal(false);
+
+  public setDarkMode = effect(() => {
+    document.documentElement.classList.toggle('dark', this.darkMode());
+  });
 }
