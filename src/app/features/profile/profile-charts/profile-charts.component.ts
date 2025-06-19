@@ -8,8 +8,8 @@ import {
 } from "@angular/material/expansion";
 import {debounceTime, fromEvent, Subscription} from 'rxjs';
 import {JsonPipe} from '@angular/common';
-import {UserActivitiesVM} from '@features/profile/models/user-activities.model';
-import {ActivitiesData, ChartMainConfig} from '@features/profile/models/charts.model';
+import {UserActivitiesVM} from '@features/profile/data-access/models/user-activities.model';
+import {ActivitiesData, ChartMainConfig} from '@features/profile/data-access/models/charts.model';
 
 @Component({
   selector: 'profile-charts',

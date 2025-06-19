@@ -13,7 +13,7 @@
         </li>
         @if (isAuth) {
           <li class="header__nav-item">
-            <a class="nav-link" routerLink="">Рекомендации</a>
+            <a class="nav-link" routerLink="/recommendations">Рекомендации</a>
           </li>
         }
       </ul>
@@ -34,9 +34,9 @@
         </button>
       } @else {
         <div class="d-flex align-items-center gap-2">
-          <a class="text-decoration-none" routerLink="/login">Вход</a>
+          <a class="text-dark text-decoration-none" routerLink="/login">Вход</a>
           <span>/</span>
-          <a class="text-decoration-none" routerLink="/register">Регистрация</a>
+          <a class="text-dark text-decoration-none" routerLink="/register">Регистрация</a>
         </div>
       }
     </div>

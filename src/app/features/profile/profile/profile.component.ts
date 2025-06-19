@@ -23,9 +23,9 @@ import {MatIconButton, MatMiniFabButton} from '@angular/material/button';
 import {MatDialog} from '@angular/material/dialog';
 import {EditProfileDialog} from '@features/profile/edit-profile-dialog/edit-profile-dialog.component';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {UserEditProfileVM} from '@features/profile/models/user-profile.model';
+import {UserEditProfileVM} from '@features/profile/data-access/models/user-profile.model';
 import {ProfileFacade} from '@features/profile/data-access/profile.facade';
-import {AuthFacade} from '@auth/auth.facade';
+import {AuthFacade} from '@auth/data-access/auth.facade';
 
 @Component({
   selector: 'profile',

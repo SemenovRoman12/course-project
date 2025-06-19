@@ -8,14 +8,17 @@ import {provideHttpClient, withInterceptors} from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {API_URL} from '@core/http/api-url.token';
 import {environment} from '../environments/environment.development';
-import {authFeature} from '@auth/+state/auth.reducer';
-import * as authEffects from "@auth/+state/auth.effects";
+import {authFeature} from '@auth/data-access/+state/auth.reducer';
+import * as authEffects from "@auth/data-access/+state/auth.effects";
 import {tokenInterceptor} from '@auth/services/token.interceptor';
 import * as reviewEffects from '@features/reviews/+state/reviews.effects';
 import {reviewsFeature} from '@features/reviews/+state/reviews.reducer';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
 import {profileFeature} from '@features/profile/data-access/+state/profile.reducer';
-import * as profileEffect from '@features/profile/data-access/+state/profile.effects';
+import * as profileEffects from '@features/profile/data-access/+state/profile.effects';
+import {GEMINI_API_URL} from '@features/recommendations/services/gemini-api-url.token';
+import * as recommendationEffects from '@features/recommendations/data-access/+state/recommendation.effects';
+import {recommendationFeature} from '@features/recommendations/data-access/+state/recommendation.reducer';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -25,11 +28,13 @@ export const appConfig: ApplicationConfig = {
       [authFeature.name]: authFeature.reducer,
       [reviewsFeature.name]: reviewsFeature.reducer,
       [profileFeature.name]: profileFeature.reducer,
+      [recommendationFeature.name]: recommendationFeature.reducer,
     }),
     provideEffects(
       authEffects,
       reviewEffects,
-      profileEffect,
+      profileEffects,
+      recommendationEffects,
     ),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
     provideHttpClient(withInterceptors([tokenInterceptor])),
@@ -37,6 +42,10 @@ export const appConfig: ApplicationConfig = {
     {
       provide: API_URL,
       useValue: environment.api_url,
+    },
+    {
+      provide: GEMINI_API_URL,
+      useValue: environment.gemini_api_url
     },
     importProvidersFrom(NgxChartsModule),
   ]

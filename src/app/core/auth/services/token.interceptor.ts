@@ -1,13 +1,27 @@
-import {HttpInterceptorFn} from '@angular/common/http';
+import {HttpInterceptorFn, HttpRequest} from '@angular/common/http';
 import {StorageTokenService} from './storage-token.service';
 import {inject} from '@angular/core';
 import {catchError, throwError} from 'rxjs';
+
+const shouldIntercept = (req: HttpRequest<any>): boolean => {
+  const shouldInterceptUrls = ['auth_me', 'activities', 'recommendations'];
+
+  for (const url of shouldInterceptUrls) {
+    if(req.url.includes(url)) {
+      return true;
+    }
+  }
+
+  return false
+}
 
 export const tokenInterceptor: HttpInterceptorFn = (req, next) => {
   const storageTokenService = inject(StorageTokenService);
   const token = storageTokenService.getItem();
 
-  if(token && req.url.includes('auth_me')) {
+
+
+  if(token && shouldIntercept(req)) {
     req = req.clone({
       setHeaders: {
         'Authorization': `Bearer ${token}`,

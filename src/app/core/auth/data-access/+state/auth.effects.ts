@@ -1,6 +1,6 @@
 import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {inject} from '@angular/core';
-import {ApiService} from '../../http/api.service';
+import {ApiService} from '../../../http/api.service';
 import {AuthActions} from './auth.actions';
 import {catchError, map, of, switchMap, tap, withLatestFrom} from 'rxjs';
 import {
@@ -9,14 +9,14 @@ import {
   SignAuthUser,
   ChangeProfileDataPayload,
   ChangeProfileDataResponse
-} from '../models/sign.auth.model';
-import {StorageTokenService} from '../services/storage-token.service';
+} from '@auth/data-access/models/sign.auth.model';
+import {StorageTokenService} from '../../services/storage-token.service';
 import {Router} from '@angular/router';
 import {userAuthRequestAdapter} from '@utils/auth/user-auth-request.adapter';
 import {UserEntity} from '@models/user.model';
-import {AuthFacade} from '@auth/auth.facade';
+import {AuthFacade} from '@auth/data-access/auth.facade';
 import {Store} from '@ngrx/store';
-import {selectLoggedUser} from '@auth/+state/auth.selectors';
+import {selectLoggedUser} from '@auth/data-access/+state/auth.selectors';
 
 export const registerEffect$ = createEffect(
   (

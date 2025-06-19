@@ -1,0 +1,17 @@
+<form
+  [formGroup]="recommendationsForm"
+>
+  <mat-form-field>
+    <input
+      formControlName="goal"
+      matInput
+    >
+    <mat-label>Цель:</mat-label>
+  </mat-form-field>
+
+  <button
+    mat-flat-button
+    [disabled]="!recommendationsForm.valid"
+    (click)="onSubmit()"
+  >Отправить</button>
+</form>

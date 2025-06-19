@@ -1,8 +1,8 @@
 import {inject, Injectable} from '@angular/core';
 import {Store} from '@ngrx/store';
-import {ChangeProfileDataPayload, RegisterUser, SignAuthUser} from './models/sign.auth.model';
-import {AuthActions} from './+state/auth.actions';
-import {selectAuthStatus, selectIsAuthenticated, selectLoggedUser} from './+state/auth.selectors';
+import {ChangeProfileDataPayload, RegisterUser, SignAuthUser} from '@auth/data-access/models/sign.auth.model';
+import {AuthActions} from '@auth/data-access/+state/auth.actions';
+import {selectAuthStatus, selectIsAuthenticated, selectLoggedUser} from '@auth/data-access/+state/auth.selectors';
 
 @Injectable({
   providedIn: 'root'

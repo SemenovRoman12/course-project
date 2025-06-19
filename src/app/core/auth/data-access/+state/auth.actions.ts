@@ -1,5 +1,5 @@
 import {createActionGroup, emptyProps, props} from '@ngrx/store';
-import {ChangeProfileDataPayload, RegisterUser, SignAuthResponse, SignAuthUser} from '../models/sign.auth.model';
+import {ChangeProfileDataPayload, RegisterUser, SignAuthResponse, SignAuthUser} from '@auth/data-access/models/sign.auth.model';
 import {UserEntity} from '@models/user.model';
 
 export const AuthActions = createActionGroup({

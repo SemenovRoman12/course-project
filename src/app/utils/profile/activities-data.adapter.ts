@@ -1,4 +1,4 @@
-import {UserActivitiesVM} from '@features/profile/models/user-activities.model';
+import {UserActivitiesVM} from '@features/profile/data-access/models/user-activities.model';
 import {UserActivitiesEntity} from '@features/profile/data-access/+state/profile.reducer';
 
 
