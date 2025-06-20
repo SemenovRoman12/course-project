@@ -1,1 +1,25 @@
-<recommendations-form></recommendations-form>
+<ng-container
+  *ngrxLet="{
+    recommendationsList: recommendationsList$,
+    recStatus: recStatus$
+  } as vm"
+>
+  @switch (vm.recStatus) {
+    @case ('loading') {
+      загрузка
+    }
+    @case ('loaded') {
+      <recommendations-form></recommendations-form>
+      <recommendations-list
+        [recommendationList]="vm.recommendationsList"
+        (deleteRecommendation)="deleteRecommendation($event)"
+      />
+    }
+    @case ('error') {
+      Ошибка
+    }
+  }
+
+</ng-container>
+
+

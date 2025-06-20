@@ -1,1 +1,13 @@
-<p>recommendations-card works!</p>
+<mat-card>
+  <mat-card-content>
+    {{recommendation.data}}
+  </mat-card-content>
+  <mat-card-actions>
+    <button
+      (click)="onDeleteRecommendation(recommendation)"
+      mat-icon-button
+    >
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>

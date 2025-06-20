@@ -3,12 +3,20 @@ import {
   RecommendationsFormComponent
 } from '@features/recommendations/recommendations-form/recommendations-form.component';
 import {RecommendationFacadeService} from '@features/recommendations/data-access/recommendation.facade.service';
+import {
+  RecommendationsListComponent
+} from '@features/recommendations/recommendations-list/recommendations-list.component';
+import {LetDirective} from '@ngrx/component';
+import {Observable} from 'rxjs';
+import {Recommendation} from '@features/recommendations/data-access/models/recommendation.model';
 
 @Component({
   selector: 'recommendations-list-container',
   standalone: true,
   imports: [
-    RecommendationsFormComponent
+    RecommendationsFormComponent,
+    RecommendationsListComponent,
+    LetDirective
   ],
   templateUrl: './recommendations-list-container.component.html',
   styleUrl: './recommendations-list-container.component.scss',
@@ -16,10 +24,16 @@ import {RecommendationFacadeService} from '@features/recommendations/data-access
 })
 export class RecommendationsListContainerComponent implements OnInit {
 
-  private recommendationFacade = inject(RecommendationFacadeService);
+  private readonly recommendationFacade = inject(RecommendationFacadeService);
+  public readonly recommendationsList$: Observable<Recommendation[]> = this.recommendationFacade.recommendationsList$;
+  public readonly recStatus$ = this.recommendationFacade.recStatus$;
+
+
+  public deleteRecommendation(recommendation: Recommendation): void {
+    this.recommendationFacade.deleteRecommendation(recommendation.id)
+  }
 
   ngOnInit() {
     this.recommendationFacade.loadRecommendations()
-    this.recommendationFacade.recommendationsList$.subscribe(recommendations => console.log(recommendations));
   }
 }

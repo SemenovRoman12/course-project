@@ -1,0 +1,12 @@
+
+@if(recommendationList) {
+  @for (recommendation of recommendationList; track recommendation.id) {
+    <recommendations-card
+      [recommendation]="recommendation"
+      (click)="onDeleteRecommendation(recommendation)"
+    />
+  }
+} @else {
+  Нет рекомендаций
+}
+

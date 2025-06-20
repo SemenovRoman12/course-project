@@ -36,6 +36,19 @@ export const recommendationFeature = createFeature({
       error,
     })),
 
-
+    on(RecommendationActions.deleteRecommendation, (state, {id}) => ({
+      ...state,
+      recStatus: 'loading' as const,
+      recommendations: state.recommendations.filter((recommendation) => recommendation.id !== id),
+    })),
+    on(RecommendationActions.deleteRecommendationSuccess, (state) => ({
+      ...state,
+      recStatus: 'loaded' as const,
+    })),
+    on(RecommendationActions.deleteRecommendationFailure, (state, {error}) => ({
+      ...state,
+      recStatus: 'error' as const,
+      error,
+    })),
   )
 });
