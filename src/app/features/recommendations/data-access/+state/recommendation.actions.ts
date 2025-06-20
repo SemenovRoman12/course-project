@@ -1,5 +1,8 @@
 import {createActionGroup, emptyProps, props} from '@ngrx/store';
-import {Recommendation} from '@features/recommendations/data-access/models/recommendation.model';
+import {
+  Recommendation,
+  RecommendationRequestPayload
+} from '@features/recommendations/data-access/models/recommendation.model';
 
 export const RecommendationActions = createActionGroup({
   source: 'recommendations',
@@ -12,8 +15,8 @@ export const RecommendationActions = createActionGroup({
     'Delete Recommendation Success': emptyProps(),
     'Delete Recommendation Failure': props<{ error: Error }>(),
 
-    'Request Recommendation': emptyProps(),
-    'Request Recommendation Success': emptyProps(),
+    'Request Recommendation': props<{goal: RecommendationRequestPayload}>(),
+    'Request Recommendation Success': props<{ recommendation: Recommendation }>(),
     'Request Recommendation Failure': props<{ error: Error }>(),
   },
 });

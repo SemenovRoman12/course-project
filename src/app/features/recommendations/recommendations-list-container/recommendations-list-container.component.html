@@ -6,7 +6,7 @@
 >
   @switch (vm.recStatus) {
     @case ('loading') {
-      загрузка
+      <mat-progress-bar mode="indeterminate"/>
     }
     @case ('loaded') {
       <recommendations-form></recommendations-form>

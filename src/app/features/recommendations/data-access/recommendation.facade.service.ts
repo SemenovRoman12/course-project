@@ -5,6 +5,7 @@ import {
   selectRecommendations,
   selectRecStatus
 } from '@features/recommendations/data-access/+state/recommendation.selectors';
+import {RecommendationRequestPayload} from '@features/recommendations/data-access/models/recommendation.model';
 
 @Injectable({
   providedIn: 'root'
@@ -21,5 +22,9 @@ export class RecommendationFacadeService {
 
   public deleteRecommendation(id: number) {
     this.store.dispatch(RecommendationActions.deleteRecommendation({id}));
+  }
+
+  public requestRecommendation(goal: RecommendationRequestPayload) {
+    this.store.dispatch(RecommendationActions.requestRecommendation({goal}));
   }
 }

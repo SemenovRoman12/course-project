@@ -1,8 +1,13 @@
-<mat-card>
-  <mat-card-content>
-    {{recommendation.data}}
+<mat-card class="rec-card">
+  <mat-card-content class="card-content-wrapper">
+    <div class="card-data">
+      {{recommendation.data}}
+    </div>
+    <div class="card-date">
+      {{recommendation.date}}
+    </div>
   </mat-card-content>
-  <mat-card-actions>
+  <mat-card-actions class="card-actions">
     <button
       (click)="onDeleteRecommendation(recommendation)"
       mat-icon-button

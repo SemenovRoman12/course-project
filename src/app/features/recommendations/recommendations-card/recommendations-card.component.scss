@@ -1,0 +1,22 @@
+.rec-card {
+  max-width: 1100px;
+  position: relative;
+  padding-bottom: 16px;
+}
+
+.card-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-right: 48px;
+}
+
+.card-date {
+  align-self: flex-end;
+}
+
+.card-actions {
+  position: absolute;
+  right: 0;
+  top: 0;
+}

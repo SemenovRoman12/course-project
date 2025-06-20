@@ -123,7 +123,7 @@ export const logoutEffect$ = createEffect(
 
 
 
-export const changerProfileEffect$ = createEffect(
+export const changeProfileEffect$ = createEffect(
   (
     actions$ = inject(Actions),
     apiService = inject(ApiService),

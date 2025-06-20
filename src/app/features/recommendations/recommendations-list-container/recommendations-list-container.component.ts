@@ -9,15 +9,17 @@ import {
 import {LetDirective} from '@ngrx/component';
 import {Observable} from 'rxjs';
 import {Recommendation} from '@features/recommendations/data-access/models/recommendation.model';
+import {MatProgressBar} from "@angular/material/progress-bar";
 
 @Component({
   selector: 'recommendations-list-container',
   standalone: true,
-  imports: [
-    RecommendationsFormComponent,
-    RecommendationsListComponent,
-    LetDirective
-  ],
+    imports: [
+        RecommendationsFormComponent,
+        RecommendationsListComponent,
+        LetDirective,
+        MatProgressBar
+    ],
   templateUrl: './recommendations-list-container.component.html',
   styleUrl: './recommendations-list-container.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

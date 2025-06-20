@@ -50,5 +50,18 @@ export const recommendationFeature = createFeature({
       recStatus: 'error' as const,
       error,
     })),
+
+    on(RecommendationActions.requestRecommendation, (state, {goal}) => ({
+      ...state,
+      recStatus: 'loading' as const,
+    })),
+
+
+
+    on(RecommendationActions.requestRecommendationFailure, (state, {error}) => ({
+      ...state,
+      recStatus: 'error' as const,
+      error
+    }))
   )
 });
