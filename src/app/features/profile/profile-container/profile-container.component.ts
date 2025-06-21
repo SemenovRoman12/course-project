@@ -9,7 +9,7 @@ import {map, Observable} from 'rxjs';
 import {UserEntity} from '@models/user.model';
 import {LoadingStatus} from '@models/loading-status.type';
 import {UserActivitiesVM} from '@features/profile/data-access/models/user-activities.model';
-import {UserActivitiesAdapter} from '@utils/profile/activities-data.adapter';
+import {UserActivitiesAdapter} from '@features/profile/utils/activities-data.adapter';
 
 @Component({
   selector: 'profile-container',
