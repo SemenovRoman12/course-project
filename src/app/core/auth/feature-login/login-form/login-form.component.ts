@@ -6,6 +6,8 @@ import {MatButton} from '@angular/material/button';
 import {MatError, MatFormField, MatLabel} from '@angular/material/form-field';
 import {MatInput} from '@angular/material/input';
 import {RouterLink, RouterLinkActive} from '@angular/router';
+import {emailValidator} from '@auth/utils/validators/email-validator';
+import {passwordValidator} from '@auth/utils/validators/password-validator';
 
 @Component({
   selector: 'login-form',
@@ -30,9 +32,13 @@ export class LoginFormComponent {
   private readonly fb = inject(FormBuilder);
 
   public readonly loginForm: FormGroup<FormType<SignAuthUser>> = this.fb.group({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(4)]),
-  })
+    email: new FormControl('', [Validators.required, emailValidator(),]),
+    password: new FormControl('', [
+      Validators.required,
+      Validators.minLength(4),
+      passwordValidator(),
+    ]),
+  });
 
   public onSubmit() {
     if(this.loginForm.valid) {

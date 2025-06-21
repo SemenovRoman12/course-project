@@ -8,7 +8,8 @@ import {MatButton} from '@angular/material/button';
 import {RouterLink, RouterLinkActive} from "@angular/router";
 import {MatOption, MatSelect} from '@angular/material/select';
 import {MatDatepicker, MatDatepickerInput, MatDatepickerToggle} from '@angular/material/datepicker';
-import {provideNativeDateAdapter} from '@angular/material/core';
+import {emailValidator} from '@auth/utils/validators/email-validator';
+import {passwordValidator} from '@auth/utils/validators/password-validator';
 
 @Component({
   selector: 'register-form',
@@ -30,7 +31,7 @@ import {provideNativeDateAdapter} from '@angular/material/core';
     MatDatepicker,
     MatHint
   ],
-  providers: [provideNativeDateAdapter()],
+  providers: [],
   templateUrl: './register-form.component.html',
   styleUrl: './register-form.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -42,9 +43,13 @@ export class RegisterFormComponent {
 
   public readonly registerForm: FormGroup<FormType<RegisterUser>> = this.fb.group({
     name: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required]),
-  })
+    email: new FormControl('', [Validators.required, emailValidator()]),
+    password: new FormControl('', [
+      Validators.required,
+      Validators.minLength(4),
+      passwordValidator(),
+    ]),
+  });
 
   public onSubmit() {
     if(this.registerForm.valid) {
