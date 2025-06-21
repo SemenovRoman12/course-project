@@ -1,5 +1,5 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, inject, Output} from '@angular/core';
-import {SignAuthUser} from '@auth/data-access/models/sign.auth.model';
+import {ChangeDetectionStrategy, Component, EventEmitter, inject, Input, Output} from '@angular/core';
+import {ErrorAuthResponse, SignAuthUser} from '@auth/data-access/models/sign.auth.model';
 import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {FormType} from '@models/form.type';
 import {MatButton} from '@angular/material/button';
@@ -8,6 +8,7 @@ import {MatInput} from '@angular/material/input';
 import {RouterLink, RouterLinkActive} from '@angular/router';
 import {emailValidator} from '@auth/utils/validators/email-validator';
 import {passwordValidator} from '@auth/utils/validators/password-validator';
+import {JsonPipe} from '@angular/common';
 
 @Component({
   selector: 'login-form',
@@ -21,6 +22,7 @@ import {passwordValidator} from '@auth/utils/validators/password-validator';
     ReactiveFormsModule,
     RouterLinkActive,
     RouterLink,
+    JsonPipe,
   ],
   templateUrl: './login-form.component.html',
   styleUrl: './login-form.component.scss',
@@ -28,6 +30,7 @@ import {passwordValidator} from '@auth/utils/validators/password-validator';
 })
 export class LoginFormComponent {
   @Output() loginEvent = new EventEmitter<SignAuthUser>();
+  @Input({required: true}) authError: ErrorAuthResponse | null = null;
 
   private readonly fb = inject(FormBuilder);
 

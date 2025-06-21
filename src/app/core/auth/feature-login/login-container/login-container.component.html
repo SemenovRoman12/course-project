@@ -1,3 +1,5 @@
 <login-form
+  *ngrxLet="authError$ as authError"
   (loginEvent)="loginSubmit($event)"
+  [authError]="authError"
 ></login-form>

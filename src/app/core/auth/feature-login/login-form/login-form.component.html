@@ -25,6 +25,10 @@
       <mat-error>Некорректный пароль</mat-error>
     </mat-form-field>
 
+    @if (authError && authError.statusCode === 401) {
+      <mat-error>Неверная почта или пароль</mat-error>
+    }
+
     <p class="text-end small">
       Нет аккаунта?
       <a routerLink="/register" routerLinkActive>Зарегистрируйтесь</a>
