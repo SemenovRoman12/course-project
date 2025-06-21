@@ -51,6 +51,7 @@
     >Отмена</button>
     <button
       mat-flat-button
+      [disabled]="!profileForm.valid"
       (click)="onDialogSave()"
     >Сохранить</button>
   </mat-dialog-actions>
