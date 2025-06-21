@@ -2,7 +2,7 @@ import {inject, Injectable} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {RecommendationActions} from '@features/recommendations/data-access/+state/recommendation.actions';
 import {
-  selectRecommendations,
+  selectRecommendations, selectRecommendationsSorted,
   selectRecStatus
 } from '@features/recommendations/data-access/+state/recommendation.selectors';
 import {RecommendationRequestPayload} from '@features/recommendations/data-access/models/recommendation.model';
@@ -14,7 +14,8 @@ export class RecommendationFacadeService {
   private readonly store = inject(Store);
 
   public readonly recommendationsList$ = this.store.select(selectRecommendations);
-  public recStatus$ = this.store.select(selectRecStatus);
+  public readonly recStatus$ = this.store.select(selectRecStatus);
+  public readonly sortedRecommendationsList$ = this.store.select(selectRecommendationsSorted)
 
   public init() {
     this.store.dispatch(RecommendationActions.loadRecommendations());

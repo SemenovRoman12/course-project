@@ -30,7 +30,7 @@ import {
 export class RecommendationsListContainerComponent implements OnInit {
   private readonly recommendationFacade = inject(RecommendationFacadeService);
   private readonly profileFacade = inject(ProfileFacade);
-  public readonly recommendationsList$: Observable<Recommendation[]> = this.recommendationFacade.recommendationsList$;
+  public readonly recommendationsList$: Observable<Recommendation[]> = this.recommendationFacade.sortedRecommendationsList$;
   public readonly recStatus$ = this.recommendationFacade.recStatus$;
 
 
