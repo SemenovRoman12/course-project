@@ -54,7 +54,7 @@ export class ProfileComponent {
   private readonly authFacade = inject(AuthFacade);
 
   onOpenEditProfileDialog() {
-    const { id, age, gender, email, ...editableUserFields } = this.user;
+    const { id, email, ...editableUserFields } = this.user;
 
     const dialogRef = this.dialog.open<EditProfileDialog>(EditProfileDialog, {
       data: editableUserFields as UserEditProfileVM,

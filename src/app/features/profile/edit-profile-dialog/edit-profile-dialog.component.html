@@ -25,6 +25,24 @@
         formControlName="weight"
       >
     </mat-form-field>
+
+
+    <mat-form-field>
+      <mat-label>Возраст</mat-label>
+      <input
+        matInput
+        formControlName="age"
+      >
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Пол</mat-label>
+      <mat-select formControlName="gender">
+        @for (gender of ['Мужской', 'Женский']; track gender) {
+          <mat-option [value]="gender">{{gender}}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
   </form>
   <mat-dialog-actions class="profile-buttons">
     <button

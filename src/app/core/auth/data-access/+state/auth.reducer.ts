@@ -1,7 +1,7 @@
 import {LoadingStatus} from '@models/loading-status.type';
 import {createFeature, createReducer, on} from '@ngrx/store';
 import {AuthActions} from './auth.actions';
-import {UserEntity} from '@models/user.model';
+import {genderEnum, UserEntity} from '@models/user.model';
 
 export interface AuthState {
   authStatus: LoadingStatus,
@@ -19,7 +19,7 @@ export const authInitialState: AuthState = {
     name: '',
     email: '',
     age: 0,
-    gender: '',
+    gender: genderEnum.male,
     height: 0,
     weight: 0,
   },
