@@ -19,6 +19,7 @@ import * as profileEffects from '@features/profile/data-access/+state/profile.ef
 import {GEMINI_API_URL} from '@features/recommendations/services/gemini-api-url.token';
 import * as recommendationEffects from '@features/recommendations/data-access/+state/recommendation.effects';
 import {recommendationFeature} from '@features/recommendations/data-access/+state/recommendation.reducer';
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -45,7 +46,11 @@ export const appConfig: ApplicationConfig = {
     },
     {
       provide: GEMINI_API_URL,
-      useValue: environment.gemini_api_url
+      useValue: environment.gemini_api_url,
+    },
+    {
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+      useValue: {appearance: 'outline'},
     },
     importProvidersFrom(NgxChartsModule),
   ]
