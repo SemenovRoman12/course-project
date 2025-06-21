@@ -3,7 +3,7 @@ import {inject} from '@angular/core';
 import {ApiService} from '@core/http/api.service';
 import {ReviewsActions} from './reviews.actions';
 import {catchError, map, of, switchMap} from 'rxjs';
-import {ReviewEntity} from '../models/reviews.model';
+import {ReviewEntity} from '@features/reviews/data-access/models/reviews.model';
 
 export const loadReviewsEffect = createEffect(
   (

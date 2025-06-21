@@ -7,7 +7,6 @@ import {ProfileFacade} from '@features/profile/data-access/profile.facade';
 import {MatProgressBar} from '@angular/material/progress-bar';
 import {map, Observable} from 'rxjs';
 import {UserEntity} from '@models/user.model';
-import {UserActivitiesEntity} from '@features/profile/data-access/+state/profile.reducer';
 import {LoadingStatus} from '@models/loading-status.type';
 import {UserActivitiesVM} from '@features/profile/data-access/models/user-activities.model';
 import {UserActivitiesAdapter} from '@utils/profile/activities-data.adapter';

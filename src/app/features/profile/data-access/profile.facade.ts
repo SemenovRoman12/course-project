@@ -16,6 +16,6 @@ export class ProfileFacade {
   public readonly profileStatus$ = this.store.select(selectProfileStatus);
 
   public init() {
-    this.store.dispatch(ProfileActions.activities());
+    this.store.dispatch(ProfileActions.loadActivities());
   }
 }

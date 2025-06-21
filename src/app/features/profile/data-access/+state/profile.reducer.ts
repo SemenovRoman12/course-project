@@ -33,16 +33,16 @@ export const profileFeature = createFeature({
   name: 'profile',
   reducer: createReducer(
     profileInitialState,
-    on(ProfileActions.activities, (state) => ({
+    on(ProfileActions.loadActivities, (state) => ({
       ...state,
       profileStatus: 'loading' as const,
     })),
-    on(ProfileActions.activitiesSuccess, (state, { activities }) => ({
+    on(ProfileActions.loadActivitiesSuccess, (state, { activities }) => ({
       ...state,
       activities,
       profileStatus: 'loaded' as const,
     })),
-    on(ProfileActions.activitiesFailure, (state, { error }) => ({
+    on(ProfileActions.loadActivitiesFailure, (state, { error }) => ({
       ...state,
       error,
       profileStatus: 'error' as const,

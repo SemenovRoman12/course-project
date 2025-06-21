@@ -1,9 +1,7 @@
 import {Recommendation} from '@features/recommendations/data-access/models/recommendation.model';
 import {LoadingStatus} from '@models/loading-status.type';
 import {createFeature, createReducer, on} from '@ngrx/store';
-import {R} from '@angular/cdk/keycodes';
 import {RecommendationActions} from '@features/recommendations/data-access/+state/recommendation.actions';
-import {state} from '@angular/animations';
 
 export interface RecommendationState {
   recommendations: Recommendation[];
@@ -55,13 +53,15 @@ export const recommendationFeature = createFeature({
       ...state,
       recStatus: 'loading' as const,
     })),
-
-
-
+    on(RecommendationActions.requestRecommendationSuccess, (state, {recommendation}) => ({
+      ...state,
+      recStatus: 'loaded' as const,
+      recommendations: [...state.recommendations, recommendation],
+    })),
     on(RecommendationActions.requestRecommendationFailure, (state, {error}) => ({
       ...state,
       recStatus: 'error' as const,
       error
-    }))
+    })),
   )
 });

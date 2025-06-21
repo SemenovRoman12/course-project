@@ -16,7 +16,7 @@ export class RecommendationFacadeService {
   public readonly recommendationsList$ = this.store.select(selectRecommendations);
   public recStatus$ = this.store.select(selectRecStatus);
 
-  public loadRecommendations() {
+  public init() {
     this.store.dispatch(RecommendationActions.loadRecommendations());
   }
 

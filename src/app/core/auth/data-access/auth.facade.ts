@@ -12,7 +12,6 @@ export class AuthFacade {
 
   public readonly isAuthenticated$ = this.store.select(selectIsAuthenticated);
   public readonly loggedUser$ = this.store.select(selectLoggedUser);
-  public readonly authStatus$ = this.store.select(selectAuthStatus);
 
   public register(userData: RegisterUser) {
     this.store.dispatch(AuthActions.register({ userData }));
@@ -31,6 +30,6 @@ export class AuthFacade {
   }
 
   public changeProfile(data: ChangeProfileDataPayload) {
-    this.store.dispatch(AuthActions.changeProfileData({data}));
+    this.store.dispatch(AuthActions.changeProfileData({newUserData: data}));
   }
 }

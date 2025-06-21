@@ -11,11 +11,11 @@ export const RecommendationActions = createActionGroup({
     'Load Recommendations Success': props<{ recommendations: Recommendation[] }>(),
     'Load Recommendations Failure': props<{ error: Error }>(),
 
-    'Delete Recommendation': props<{id: number}>(),
+    'Delete Recommendation': props<{ id: number }>(),
     'Delete Recommendation Success': emptyProps(),
     'Delete Recommendation Failure': props<{ error: Error }>(),
 
-    'Request Recommendation': props<{goal: RecommendationRequestPayload}>(),
+    'Request Recommendation': props<{ goal: RecommendationRequestPayload }>(),
     'Request Recommendation Success': props<{ recommendation: Recommendation }>(),
     'Request Recommendation Failure': props<{ error: Error }>(),
   },

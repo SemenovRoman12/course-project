@@ -121,8 +121,6 @@ export const logoutEffect$ = createEffect(
   }, {functional: true, dispatch: false}
 );
 
-
-
 export const changeProfileEffect$ = createEffect(
   (
     actions$ = inject(Actions),
@@ -132,9 +130,9 @@ export const changeProfileEffect$ = createEffect(
     return actions$.pipe(
       ofType(AuthActions.changeProfileData),
       withLatestFrom(store.select(selectLoggedUser)),
-      switchMap(([{data}, user]) => {
-        return apiService.patch<ChangeProfileDataResponse, ChangeProfileDataPayload>(`/users/${user.id}`, data).pipe(
-          map(response => AuthActions.changeProfileDataSuccess({ res: response })),
+      switchMap(([{newUserData}, user]) => {
+        return apiService.patch<ChangeProfileDataResponse, ChangeProfileDataPayload>(`/users/${user.id}`, newUserData).pipe(
+          map(newUserData => AuthActions.changeProfileDataSuccess({ newUserData })),
           catchError(error => of(AuthActions.changeProfileDataFailure({ error })))
         );
       })

@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, inject, OnInit} from '@angular/core';
-import {ReviewsFacade} from '@features/reviews/reviews.facade';
+import {ReviewsFacade} from '@features/reviews/data-access/reviews.facade';
 import {AboutSectionComponent} from '@shared/components/about-section/about-section.component';
 import {
   ReviewsListContainerComponent

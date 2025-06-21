@@ -5,9 +5,7 @@ import {RecommendationActions} from '@features/recommendations/data-access/+stat
 import {catchError, filter, map, of, switchMap, tap, withLatestFrom} from 'rxjs';
 import {
   GeminiRequestBody,
-  PromptToGemini,
   RecommendationGeminiResponse,
-  RecommendationRequestPayload,
   RecommendationResponse, RecommendationVM,
 } from '@features/recommendations/data-access/models/recommendation.model';
 import {AuthFacade} from '@auth/data-access/auth.facade';
@@ -16,7 +14,6 @@ import {Store} from '@ngrx/store';
 import {selectLoggedUser} from '@auth/data-access/+state/auth.selectors';
 import {geminiAdapter} from '@features/recommendations/utils/request-gemini.adapter';
 import {selectActivities} from '@features/profile/data-access/+state/profile.selectors';
-import {formatDate} from '@features/recommendations/utils/date-transform';
 
 export const loadRecommendationsEffect$ = createEffect(
   (
@@ -49,9 +46,7 @@ export const deleteRecommendationEffect$ = createEffect(
     return actions$.pipe(
       ofType(RecommendationActions.deleteRecommendation),
       switchMap(({id}) => {
-        console.log(id)
         return apiService.delete<any>(`/recommendations/${id}`).pipe(
-          tap((res) => console.log(res)),
           map(() => RecommendationActions.deleteRecommendationSuccess()),
           catchError((error) => of(RecommendationActions.deleteRecommendationFailure({error}))),
         );
@@ -74,19 +69,16 @@ export const requestRecommendationEffect$ = createEffect(
         const prompt = geminiAdapter.requestGeminiAdapter( goal, userData, userActivities);
         const body = geminiAdapter.bodyGeminiAdapter(prompt);
 
-
         return geminiService.post<RecommendationGeminiResponse, GeminiRequestBody>(body).pipe(
           map((recommendation) => geminiAdapter.responseGeminiToRequestAdapter(recommendation)),
           switchMap((data) => {
             return apiService.post<any, RecommendationVM>('/recommendations', data).pipe(
-              tap((recommendation) => console.log(recommendation)),
-              map((recommendation) => RecommendationActions.requestRecommendationSuccess(recommendation)),
+              map((recommendation) => RecommendationActions.requestRecommendationSuccess({recommendation})),
               catchError((error) => of(RecommendationActions.deleteRecommendationFailure({error})))
             );
           })
         );
       })
     );
-  },
-  { functional: true }
+  }, { functional: true }
 );

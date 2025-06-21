@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, inject, Output} from '@angular/core';
-import {RegisterUser, SignAuthUser} from '@auth/data-access/models/sign.auth.model';
+import {SignAuthUser} from '@auth/data-access/models/sign.auth.model';
 import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {FormType} from '@models/form.type';
 import {MatButton} from '@angular/material/button';
@@ -18,7 +18,7 @@ import {RouterLink, RouterLinkActive} from '@angular/router';
     MatLabel,
     ReactiveFormsModule,
     RouterLinkActive,
-    RouterLink
+    RouterLink,
   ],
   templateUrl: './login-form.component.html',
   styleUrl: './login-form.component.scss',
@@ -31,7 +31,7 @@ export class LoginFormComponent {
 
   public readonly loginForm: FormGroup<FormType<SignAuthUser>> = this.fb.group({
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required]),
+    password: new FormControl('', [Validators.required, Validators.minLength(4)]),
   })
 
   public onSubmit() {

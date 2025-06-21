@@ -1,5 +1,5 @@
 import {createActionGroup, emptyProps, props} from '@ngrx/store';
-import { ReviewEntity } from '../models/reviews.model';
+import { ReviewEntity } from '@features/reviews/data-access/models/reviews.model';
 
 export const ReviewsActions = createActionGroup({
   source: "Reviews",

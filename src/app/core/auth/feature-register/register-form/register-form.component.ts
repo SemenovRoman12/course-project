@@ -43,8 +43,6 @@ export class RegisterFormComponent {
   public readonly registerForm: FormGroup<FormType<RegisterUser>> = this.fb.group({
     name: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    //gender: new FormControl('', [Validators.required]),
-    // age: new FormControl(0, [Validators.required,]),
     password: new FormControl('', [Validators.required]),
   })
 
@@ -53,8 +51,6 @@ export class RegisterFormComponent {
       const data: RegisterUser = {
         name: this.registerForm.value.name?.trim() as string,
         email: this.registerForm.value.email?.trim().toLowerCase() as string,
-        //gender: this.registerForm.value.gender?.trim() as string,
-        // age: this.registerForm.value.age,
         password: this.registerForm.value.password as string,
       };
       this.registerEvent.emit(data);

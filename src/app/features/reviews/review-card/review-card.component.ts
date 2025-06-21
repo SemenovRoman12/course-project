@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
-import {ReviewEntity} from '../models/reviews.model';
+import {ReviewEntity} from '@features/reviews/data-access/models/reviews.model';
 import {MatCard, MatCardContent, MatCardHeader} from '@angular/material/card';
 import {MatIcon} from '@angular/material/icon';
 

@@ -12,14 +12,14 @@ export const activitiesEffect = createEffect((
   authFacade  = inject(AuthFacade),
 ) => {
   return actions$.pipe(
-    ofType(ProfileActions.activities),
+    ofType(ProfileActions.loadActivities),
     switchMap(() =>
       authFacade.loggedUser$.pipe(
         filter(user => user.id !== 0),
         switchMap(user =>
           apiService.get<UserActivitiesEntity[]>(`/activities?_relations=users&user_id=${user.id}`).pipe(
-            map(activities => ProfileActions.activitiesSuccess({ activities })),
-            catchError(error => of(ProfileActions.activitiesFailure({ error })))
+            map(activities => ProfileActions.loadActivitiesSuccess({ activities })),
+            catchError(error => of(ProfileActions.loadActivitiesFailure({ error })))
           )
         )
       )

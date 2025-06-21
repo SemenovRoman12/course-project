@@ -10,6 +10,7 @@ import {LetDirective} from '@ngrx/component';
 import {Observable} from 'rxjs';
 import {Recommendation} from '@features/recommendations/data-access/models/recommendation.model';
 import {MatProgressBar} from "@angular/material/progress-bar";
+import {ProfileFacade} from '@features/profile/data-access/profile.facade';
 
 @Component({
   selector: 'recommendations-list-container',
@@ -25,8 +26,8 @@ import {MatProgressBar} from "@angular/material/progress-bar";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RecommendationsListContainerComponent implements OnInit {
-
   private readonly recommendationFacade = inject(RecommendationFacadeService);
+  private readonly profileFacade = inject(ProfileFacade);
   public readonly recommendationsList$: Observable<Recommendation[]> = this.recommendationFacade.recommendationsList$;
   public readonly recStatus$ = this.recommendationFacade.recStatus$;
 
@@ -36,6 +37,7 @@ export class RecommendationsListContainerComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.recommendationFacade.loadRecommendations()
+    this.profileFacade.init()
+    this.recommendationFacade.init();
   }
 }

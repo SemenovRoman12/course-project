@@ -1,15 +1,12 @@
 import {
   ChangeDetectionStrategy,
   Component, DestroyRef,
-  ElementRef,
-  HostListener, inject,
+  inject,
   Input,
-  OnInit,
-  signal,
   ViewEncapsulation
 } from '@angular/core';
 import {UserEntity} from '@models/user.model';
-import {Color, NgxChartsModule, ScaleType} from '@swimlane/ngx-charts';
+import {NgxChartsModule} from '@swimlane/ngx-charts';
 import {
   MatAccordion,
   MatExpansionPanel,
@@ -24,7 +21,6 @@ import {MatDialog} from '@angular/material/dialog';
 import {EditProfileDialog} from '@features/profile/edit-profile-dialog/edit-profile-dialog.component';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {UserEditProfileVM} from '@features/profile/data-access/models/user-profile.model';
-import {ProfileFacade} from '@features/profile/data-access/profile.facade';
 import {AuthFacade} from '@auth/data-access/auth.facade';
 
 @Component({

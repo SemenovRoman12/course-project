@@ -74,6 +74,21 @@ export const authFeature = createFeature({
       error,
     })),
 
+    on(AuthActions.changeProfileData, (state) => ({
+      ...state,
+      authStatus: 'loading' as const,
+    })),
+    on(AuthActions.changeProfileDataSuccess, (state, {newUserData}) => ({
+      ...state,
+      authStatus: 'loaded' as const,
+      loggedUser: newUserData,
+    })),
+    on(AuthActions.changeProfileDataFailure, (state, {error}) => ({
+      ...state,
+      authStatus: 'error' as const,
+      error,
+    })),
+
     on(AuthActions.logout, (state) => ({
       ...state,
       ...authInitialState,

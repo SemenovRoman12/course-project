@@ -1,7 +1,7 @@
 import {inject, Injectable} from '@angular/core';
 import {Store} from '@ngrx/store';
-import {ReviewsActions} from './+state/reviews.actions';
-import {selectReviews, selectReviewsStatus} from './+state/reviews.selectors';
+import {ReviewsActions} from '@features/reviews/data-access/+state/reviews.actions';
+import {selectReviews, selectReviewsStatus} from '@features/reviews/data-access/+state/reviews.selectors';
 
 @Injectable({
   providedIn: 'root'

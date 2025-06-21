@@ -1,4 +1,4 @@
-import {ReviewEntity} from '../models/reviews.model';
+import {ReviewEntity} from '@features/reviews/data-access/models/reviews.model';
 import {createFeature, createReducer, on} from '@ngrx/store';
 import {ReviewsActions} from './reviews.actions';
 import {LoadingStatus} from '@models/loading-status.type';
