@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background-color: var(--sys-surface-container);
 }
 
 .content {
@@ -12,7 +13,7 @@
 
 .header {
   margin-bottom: 20px;
-  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, .15);
+  box-shadow: 0 2px 4px -1px var(--sys-surface-dim);
 }
 
 .footer {

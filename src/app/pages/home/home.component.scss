@@ -3,3 +3,9 @@
   flex-direction: column;
   gap: 80px;
 }
+
+.reviews-section,
+.products-section,
+.about-section {
+  color: var(--sys-inverse-surface);
+}

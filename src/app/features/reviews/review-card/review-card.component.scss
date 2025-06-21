@@ -1,19 +1,30 @@
 .review-card {
   height: 165px;
   min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .review-title {
   font-size: 24px;
-  margin-bottom: 5px;
+  padding-bottom: 16px;
+  color: var(--sys-inverse-surface);
+  background-color: var(--sys-surface-container-high);
 }
 
 .description {
+  color: var(--sys-inverse-surface);
   overflow: hidden;
   text-overflow: ellipsis;
   margin-bottom: auto;
+  padding-top: 10px;
 }
 
 mat-icon {
   color: #fbc02d;
+}
+
+.content-wrapper {
+  background-color: var(--sys-surface-container);
 }

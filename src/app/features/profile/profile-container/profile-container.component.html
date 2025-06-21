@@ -9,7 +9,10 @@
     @case ('loaded') {
       <div class="profile-wrapper">
         <profile class="user-profile" [user]="vm.user"></profile>
-        <profile-charts [activitiesData]="vm.activitiesData"></profile-charts>
+        <profile-charts
+          class="profile-charts"
+          [activitiesData]="vm.activitiesData"
+        ></profile-charts>
       </div>
 
     }

@@ -3,5 +3,9 @@
 }
 
 .nav-link {
- color: #000
+ color: var(--sys-inverse-surface)
+}
+
+.header {
+  background-color: var(--sys-surface-container-high);
 }

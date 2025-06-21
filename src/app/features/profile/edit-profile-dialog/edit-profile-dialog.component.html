@@ -1,4 +1,4 @@
-<mat-dialog-content>
+<mat-dialog-content class="edit-wrapper">
   <h4>Редактирование</h4>
   <form
     [formGroup]="profileForm"
@@ -46,6 +46,7 @@
   </form>
   <mat-dialog-actions class="profile-buttons">
     <button
+      class="cancel-btn"
       mat-raised-button
       (click)="onDialogClose()"
     >Отмена</button>

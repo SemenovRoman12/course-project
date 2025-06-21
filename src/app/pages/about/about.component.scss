@@ -1,3 +1,9 @@
 .about-info {
   height: 100%;
 }
+
+.about-title,
+.about-subtitle,
+.about-contacts-info {
+  color: var(--sys-inverse-surface);
+}

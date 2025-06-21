@@ -1,6 +1,16 @@
+.edit-wrapper {
+  color: var(--sys-inverse-surface);
+  background-color: var(--sys-surface-container-high) !important;
+}
+
 .profile-buttons {
   display: flex;
   gap: 20px;
+}
+
+.cancel-btn {
+  color: var(--sys-error) !important;
+  background-color: var(--sys-error-container) !important;
 }
 
 .profile-form {

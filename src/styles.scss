@@ -4,8 +4,6 @@
 
 $theme: mat.define-theme((
   color: (
-    //theme-type: light,
-    //primary: mat.$azure-palette,
     use-system-variables: true
   ),
 ));
@@ -73,6 +71,10 @@ html {
   --sys-surface-container: rgb(238 237 243);
   --sys-surface-container-high: rgb(232 231 237);
   --sys-surface-container-highest: rgb(226 226 232);
+
+  --ngx-charts-text-color: var(--sys-on-surface);
+  --ngx-charts-axis-color: var(--sys-outline);
+  --ngx-charts-grid-color: var(--sys-outline-variant);
 }
 
 html {
@@ -129,8 +131,31 @@ html {
   --sys-surface-container: rgb(30 32 36);
   --sys-surface-container-high: rgb(40 42 46);
   --sys-surface-container-highest: rgb(51 53 57);
+
+  --ngx-charts-text-color: var(--sys-on-surface);
+  --ngx-charts-axis-color: var(--sys-outline);
+  --ngx-charts-grid-color: var(--sys-outline-variant);
 }
 
+.ngx-charts {
+  .axis {
+    .tick {
+      text {
+        fill: var(--ngx-charts-text-color) !important;
+        font-size: 12px;
+      }
+    }
+
+    .axis-label {
+      text {
+        fill: var(--ngx-charts-text-color) !important;
+        font-size: 14px;
+        font-weight: 500;
+      }
+    }
+
+  }
+}
 
 .mat-expansion-panel-body {
   padding: 0 !important;
