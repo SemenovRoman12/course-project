@@ -1,7 +1,7 @@
 import {UserEntity} from '@models/user.model';
 import {
-  RecommendationsCardComponent
-} from '@features/recommendations/recommendations-card/recommendations-card.component';
+  RecommendationCardComponent
+} from '@features/recommendations/recommendation-card/recommendation-card.component';
 import {UserActivitiesEntity} from '@features/profile/data-access/+state/profile.reducer';
 
 export interface RecommendationGeminiResponse {

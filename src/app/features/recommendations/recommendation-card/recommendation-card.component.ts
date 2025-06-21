@@ -5,7 +5,7 @@ import {MatIconButton} from '@angular/material/button';
 import {MatIcon} from '@angular/material/icon';
 
 @Component({
-  selector: 'recommendations-card',
+  selector: 'recommendation-card',
   standalone: true,
   imports: [
     MatCard,
@@ -14,11 +14,11 @@ import {MatIcon} from '@angular/material/icon';
     MatIconButton,
     MatIcon
   ],
-  templateUrl: './recommendations-card.component.html',
-  styleUrl: './recommendations-card.component.scss',
+  templateUrl: './recommendation-card.component.html',
+  styleUrl: './recommendation-card.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class RecommendationsCardComponent {
+export class RecommendationCardComponent {
   @Input({required: true}) recommendation!: Recommendation;
   @Output() deleteRecommendation = new EventEmitter();
 

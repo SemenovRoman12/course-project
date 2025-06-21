@@ -1,7 +1,7 @@
-@if(recommendationList) {
+@if(recommendationsList) {
   <div class="rec-list-wrapper">
-    @for (recommendation of recommendationList; track recommendation.id) {
-      <recommendations-card
+    @for (recommendation of recommendationsList; track recommendation.id) {
+      <recommendation-card
         [recommendation]="recommendation"
         (click)="onDeleteRecommendation(recommendation)"
       />
