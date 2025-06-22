@@ -5,27 +5,36 @@
     (ngSubmit)="onSubmit()"
   >
     <h3 class="text-center mb-4">Вход в аккаунт</h3>
-    <mat-form-field>
+    <mat-form-field class="form-field">
       <mat-label>Email</mat-label>
       <input
         matInput
         type="email"
         formControlName="email"
       >
+      <mat-icon matSuffix>email</mat-icon>
       <mat-error>Некорректная почта</mat-error>
     </mat-form-field>
 
-    <mat-form-field>
+    <mat-form-field class="form-field">
       <mat-label>Password</mat-label>
       <input
         matInput
-        type="password"
+        [type]="hide() ? 'password' : 'text'"
         formControlName="password"
       >
+      <button
+        type="button"
+        mat-icon-button
+        matSuffix
+        (click)="hidePassword()"
+      >
+        <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
       <mat-error>Некорректный пароль</mat-error>
     </mat-form-field>
 
-    @if (authError && authError.statusCode === 401) {
+    @if (authError && authError.message === AuthErrorMessage.InvalidData) {
       <mat-error>Неверная почта или пароль</mat-error>
     }
 

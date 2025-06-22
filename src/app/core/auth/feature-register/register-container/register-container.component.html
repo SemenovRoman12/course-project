@@ -1,3 +1,5 @@
 <register-form
+  *ngrxLet="authError$ as authError"
+  [authError]="authError"
   (registerEvent)="registerSubmit($event)"
 ></register-form>

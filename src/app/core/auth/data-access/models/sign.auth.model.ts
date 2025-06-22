@@ -28,8 +28,14 @@ export interface ChangeProfileDataPayload {
 
 export interface ChangeProfileDataResponse extends Required<UserEntity> {}
 
+export enum AuthErrorMessage {
+  NotFound = 'RESOURCE_USER_NOT_FOUND',
+  InvalidData = 'RESOURCE_INVALID_LOGIN_OR_PASSWORD',
+  UserAlreadyExist = 'RESOURCE_USER_ALREADY_EXISTS'
+}
+
 export interface ErrorAuthResponse {
-  message: string;
+  message: AuthErrorMessage;
   error: string;
   statusCode: number;
 }

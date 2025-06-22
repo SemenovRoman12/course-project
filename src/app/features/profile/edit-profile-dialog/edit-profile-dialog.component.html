@@ -10,22 +10,38 @@
         matInput
         formControlName="name"
       >
+      <mat-icon
+        matSuffix
+      >
+        person
+      </mat-icon>
     </mat-form-field>
+
     <mat-form-field>
       <mat-label>Рост</mat-label>
       <input
         matInput
         formControlName="height"
       >
+      <mat-icon
+        matSuffix
+      >
+        height
+      </mat-icon>
     </mat-form-field>
+
     <mat-form-field>
       <mat-label>Вес</mat-label>
       <input
         matInput
         formControlName="weight"
       >
+      <mat-icon
+        matSuffix
+      >
+        monitor_weight
+      </mat-icon>
     </mat-form-field>
-
 
     <mat-form-field>
       <mat-label>Возраст</mat-label>
@@ -33,13 +49,18 @@
         matInput
         formControlName="age"
       >
+      <mat-icon
+        matSuffix
+      >
+        calendar_today
+      </mat-icon>
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Пол</mat-label>
       <mat-select formControlName="gender">
         @for (gender of ['Мужской', 'Женский']; track gender) {
-          <mat-option [value]="gender">{{gender}}</mat-option>
+          <mat-option [value]="gender">{{gender}} <mat-icon>{{ gender === 'Мужской' ? 'male' : 'female' }}</mat-icon></mat-option>
         }
       </mat-select>
     </mat-form-field>

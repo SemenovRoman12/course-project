@@ -6,34 +6,48 @@
   >
     <h3 class="text-center mb-4">Регистрация</h3>
 
-    <mat-form-field>
+    <mat-form-field class="form-field">
       <mat-label>Name</mat-label>
       <input
         matInput
         formControlName="name"
       >
+      <mat-icon matSuffix>person</mat-icon>
       <mat-error>Некорректное имя</mat-error>
     </mat-form-field>
 
-    <mat-form-field>
+    <mat-form-field class="form-field">
       <mat-label>Email</mat-label>
       <input
         matInput
         type="email"
         formControlName="email"
       >
+      <mat-icon matSuffix>email</mat-icon>
       <mat-error>Некорректная почта</mat-error>
     </mat-form-field>
 
-    <mat-form-field>
+    <mat-form-field class="form-field">
       <mat-label>Password</mat-label>
       <input
         matInput
-        type="password"
+        [type]="hide() ? 'password' : 'text'"
         formControlName="password"
       >
+      <button
+        type="button"
+        mat-icon-button
+        matSuffix
+        (click)="hidePassword()"
+      >
+        <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
       <mat-error>Некорректный пароль</mat-error>
     </mat-form-field>
+
+    @if (authError && authError.message === AuthErrorMessage.UserAlreadyExist) {
+      <mat-error>Почта уже занята</mat-error>
+    }
 
     <p class="text-end small">
       Уже есть аккаунт?
