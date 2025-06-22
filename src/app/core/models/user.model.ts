@@ -3,12 +3,12 @@ export interface UserEntity {
   name: string;
   email: string;
   age?: number;
-  gender?: genderEnum;
+  gender?: GenderEnum;
   height?: number;
   weight?: number;
 }
 
-export enum genderEnum {
+export enum GenderEnum {
   male = 'Мужской',
   female = 'Женский',
 }
