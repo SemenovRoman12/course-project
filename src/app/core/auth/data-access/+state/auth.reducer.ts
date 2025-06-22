@@ -20,7 +20,7 @@ export const authInitialState: AuthState = {
     name: '',
     email: '',
     age: 0,
-    gender: GenderEnum.male,
+    gender: null,
     height: 0,
     weight: 0,
   },

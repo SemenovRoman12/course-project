@@ -1,9 +1,9 @@
 export interface UserEntity {
-  id?: number;
+  id: number;
   name: string;
   email: string;
   age?: number;
-  gender?: GenderEnum;
+  gender?: GenderEnum | null;
   height?: number;
   weight?: number;
 }

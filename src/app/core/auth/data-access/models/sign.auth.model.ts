@@ -16,7 +16,7 @@ export interface SignAuthUser {
   password: string;
 }
 
-export interface SignAuthRequest extends UserEntity {
+export interface SignAuthRequest extends Omit<UserEntity, 'id'> {
   password: string;
 }
 

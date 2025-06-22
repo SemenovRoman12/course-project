@@ -12,7 +12,7 @@ import {
 } from '@auth/data-access/models/sign.auth.model';
 import {StorageTokenService} from '../../services/storage-token.service';
 import {Router} from '@angular/router';
-import {userAuthRequestAdapter} from '@auth/utils/user-auth-request.adapter';
+import {authToRequest} from '@auth/utils/user-auth-request.adapter';
 import {UserEntity} from '@models/user.model';
 import {Store} from '@ngrx/store';
 import {selectLoggedUser} from '@auth/data-access/+state/auth.selectors';
@@ -25,7 +25,7 @@ export const registerEffect$ = createEffect(
     return actions$.pipe(
       ofType(AuthActions.register),
       switchMap(({userData}) => {
-        const userDataRequest = userAuthRequestAdapter.AuthToRequest(userData);
+        const userDataRequest = authToRequest(userData);
         return apiService.post<SignAuthResponse, SignAuthRequest>('/register', userDataRequest).pipe(
           map((res) => AuthActions.registerSuccess({res})),
           catchError((error) => of(AuthActions.registerFailure(error)))
