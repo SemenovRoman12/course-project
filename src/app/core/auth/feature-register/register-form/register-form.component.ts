@@ -45,8 +45,8 @@ export class RegisterFormComponent {
   @Input({required:true}) authError: ErrorAuthResponse | null = null;
 
   private readonly fb = inject(FormBuilder);
+  protected readonly AuthErrorMessage = AuthErrorMessage;
   public hide = signal<boolean>(true);
-
 
   public hidePassword(): void {
     this.hide.set(!this.hide());
@@ -72,6 +72,4 @@ export class RegisterFormComponent {
       this.registerEvent.emit(data);
     }
   }
-
-  protected readonly AuthErrorMessage = AuthErrorMessage;
 }

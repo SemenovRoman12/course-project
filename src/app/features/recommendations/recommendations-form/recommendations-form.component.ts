@@ -1,9 +1,11 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {MatFormField, MatLabel} from '@angular/material/form-field';
 import {MatInput} from '@angular/material/input';
 import {MatButton, MatFabButton} from '@angular/material/button';
 import {RecommendationFacadeService} from '@features/recommendations/data-access/recommendation.facade.service';
+import {FormType} from '@models/form.type';
+import {RecommendationRequestPayload} from '@features/recommendations/data-access/models/recommendation.model';
 
 @Component({
   selector: 'recommendations-form',
@@ -24,7 +26,7 @@ export class RecommendationsFormComponent {
   private readonly fb = inject(FormBuilder);
   private readonly recommendationFacade = inject(RecommendationFacadeService);
 
-  public readonly recommendationsForm = this.fb.group({
+  public readonly recommendationsForm: FormGroup<FormType<RecommendationRequestPayload>> = this.fb.group({
     goal: ['', [Validators.required, Validators.maxLength(32), Validators.minLength(5)]],
   })
 
